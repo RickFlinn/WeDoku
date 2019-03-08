@@ -28,4 +28,4 @@ An interactive multiplayer Sudoku platform that creates an environment where lik
 
 ## Schema
 
-![SCHEMA]()
+![SCHEMA](https://dev.azure.com/We-Doku/_git/We-Doku?path=%2FAssets%2FWedokuSchema.png&version=GBmaster)
