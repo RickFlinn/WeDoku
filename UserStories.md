@@ -48,7 +48,7 @@
 - Verify that two users can successfully input on a given board
 - Verify that board updates on all client boards
 
-### User Story 7: As a User, I want to see when I've made an incorrect input
+### User Story 6: As a User, I want to see when I've made an incorrect input
 #### Features:
 - Build out a Signal R trigger within server logic to target client browswer that sent the incorrect input
 - Implement client based logic to listen for Signal R message and display output to user indicating wrong move
@@ -58,7 +58,7 @@
 - Verify that client browser recieves Signal R trigger and only that client browser
 - Ensure that visual display occurrs and looks accurate
 
-### User Story 8: As a User, I want to know when I've won a game
+### User Story 7: As a User, I want to know when I've won a game
 #### Features:
 - Indicate Visually when a user has won a game
 - Create a new game board upon completion
@@ -70,7 +70,7 @@
 - Verify new board is displayed when page is loaded
 
 
-### User Story 9: As a User, I want an intuitive and engaging interface
+### User Story 8: As a User, I want an intuitive and engaging interface
 #### Features:
 -	Clean up the layout of the webpage
 -	Add animation to the Board
