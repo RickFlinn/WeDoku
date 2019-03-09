@@ -22,10 +22,12 @@
 -
 ### User Story 3: As a developer, I want to construct an algorithm to build a Sudoku Board
 #### Features:
--	Construct a to construct a matrix for the Sudoku board
+-	Construct a matrix for the Sudoku board
 -	Build a method that fills in sudoku board with a solvable board
 
 #### Acceptance Test:
+- Validate that a matrix is made
+- Validate that the matrix made is a valid board
 
 ### User Story 4: As a developer, I want to have validation based on user input within my Sudoku Board 
 #### Features:
