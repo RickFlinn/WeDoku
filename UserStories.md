@@ -19,7 +19,7 @@
 #### Acceptance Tests:
 - Verify that a sudoku board can display upon page load
 - Verify that user inputs are being sent
--
+
 ### User Story 3: As a developer, I want to construct an algorithm to build a Sudoku Board
 #### Features:
 -	Construct a matrix for the Sudoku board
