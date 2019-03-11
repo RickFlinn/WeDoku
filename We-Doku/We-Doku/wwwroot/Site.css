@@ -1,0 +1,16 @@
+﻿body {
+    margin: 0;
+    font-family: 'Comic Sans MS';
+    background-color: darkgray;
+}
+
+a{
+    color: black;
+}
+
+.header {
+    background-color: antiquewhite;
+    box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
+    position: fixed;
+    width:
+}
