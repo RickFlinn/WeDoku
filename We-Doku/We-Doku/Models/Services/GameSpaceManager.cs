@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -29,29 +30,20 @@ namespace We_Doku.Models.Services
             await _context.SaveChangesAsync();
         }
 
-        public bool GameSpacesExist(int id)
+        public async Task<GameSpaces> GetGameSpaces(int? id)
         {
-            throw new NotImplementedException();
+            return await _context.GameSpaces.FirstOrDefaultAsync(g => g.ID == id);
         }
 
-        public Task<GameSpaces> GetGameSpaces(int? id)
+        public async Task<IEnumerable<GameSpaces>> GetGameSpaces()
         {
-            throw new NotImplementedException();
+            return await _context.GameSpaces.ToListAsync();
         }
 
-        public Task<IEnumerable<GameSpaces>> GetGameSpaces()
+        public async Task UpdateGameSpace(GameSpaces gameSpaces)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task SaveAsync(GameSpaces gameSpaces)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task UpdateGameSpace(GameSpaces gamespaces)
-        {
-            throw new NotImplementedException();
+            _context.GameSpaces.Update(gameSpaces);
+            await _context.SaveChangesAsync();
         }
     }
 }

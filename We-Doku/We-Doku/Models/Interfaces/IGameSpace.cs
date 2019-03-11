@@ -20,11 +20,5 @@ namespace We_Doku.Models.Interfaces
         //Update/Edit
         Task UpdateGameSpace(GameSpaces gamespaces);
 
-        // Save
-        Task SaveAsync(GameSpaces gameSpaces);
-
-        //Check if Exists
-        bool GameSpacesExist(int id);
-
     }
 }
