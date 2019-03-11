@@ -23,16 +23,16 @@ namespace We_Doku.Models.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteGameSpaces(int id)
+        public async Task DeleteGameSpaces(int? id)
         {
-            GameSpaces gameSpaces = _context.GameSpaces.FirstOrDefault(g => g.ID == id);
+            GameSpaces gameSpaces = _context.GameSpaces.FirstOrDefault();
             _context.GameSpaces.Remove(gameSpaces);
             await _context.SaveChangesAsync();
         }
 
         public async Task<GameSpaces> GetGameSpaces(int? id)
         {
-            return await _context.GameSpaces.FirstOrDefaultAsync(g => g.ID == id);
+            return await _context.GameSpaces.FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<GameSpaces>> GetGameSpaces()

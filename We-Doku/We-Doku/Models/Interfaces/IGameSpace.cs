@@ -11,7 +11,7 @@ namespace We_Doku.Models.Interfaces
         Task CreateGameSpaces(GameSpaces gameSpaces);
 
         //Delete
-        Task DeleteGameSpaces(int id);
+        Task DeleteGameSpaces(int? id);
 
         //Read
         Task<GameSpaces> GetGameSpaces(int? id);
