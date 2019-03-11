@@ -16,14 +16,17 @@ namespace We_Doku.Models.Services
             _context = context;
         }
 
-        public Task CreateGameSpaces(GameSpaces gameSpaces)
+        public async Task CreateGameSpaces(GameSpaces gameSpaces)
         {
-            throw new NotImplementedException();
+            _context.GameSpaces.Add(gameSpaces);
+            await _context.SaveChangesAsync();
         }
 
-        public Task DeleteGameSpaces(int id)
+        public async Task DeleteGameSpaces(int id)
         {
-            throw new NotImplementedException();
+            GameSpaces gameSpaces = _context.GameSpaces.FirstOrDefault(g => g.ID == id);
+            _context.GameSpaces.Remove(gameSpaces);
+            await _context.SaveChangesAsync();
         }
 
         public bool GameSpacesExist(int id)
