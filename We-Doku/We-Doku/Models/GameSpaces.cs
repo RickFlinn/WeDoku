@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 namespace We_Doku.Models
 {
     public class GameSpaces
-    {
-
+    { 
       
     }
 }
