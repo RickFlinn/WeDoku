@@ -15,8 +15,13 @@ namespace We_Doku.Data
 
         }
 
-        public DbSet<GameBoard> GameBoard { get; set; }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<GameSpace>().HasKey(gs => new { gs.GameBoardID, gs.X, gs.Y });
+        }
 
-        public DbSet<GameSpaces> GameSpaces { get; set; }
+        public DbSet<GameBoard> GameBoards { get; set; }
+
+        public DbSet<GameSpace> GameSpace { get; set; }
     }
 }

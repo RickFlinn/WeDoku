@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace We_Doku.Models
 {
-    public class GameSpaces
+    public class GameSpace
     {
         public int X { get; set; }
         public int Y { get; set; }
@@ -15,7 +15,7 @@ namespace We_Doku.Models
 
 
         // Nav properties
-        public int GameboardID { get; set; }
+        public int GameBoardID { get; set; }
         public GameBoard GameBoard { get; set; }
     }
 }
