@@ -20,7 +20,7 @@ namespace We_Doku.Data
             builder.Entity<GameSpace>().HasKey(gs => new { gs.GameBoardID, gs.X, gs.Y });
         }
 
-        public DbSet<GameBoard> GameBoard { get; set; }
+        public DbSet<GameBoard> GameBoards { get; set; }
 
         public DbSet<GameSpace> GameSpaces { get; set; }
     }

@@ -13,6 +13,7 @@ namespace We_Doku.Models.Helpers
         
         public GridBuilder()
         {
+            GenerateSolution();
             GeneratePuzzle();
         }
 
@@ -20,7 +21,7 @@ namespace We_Doku.Models.Helpers
         ///     Generates and returns a new 9x9 array representing a solved Sudoku board.
         /// </summary>
         /// <returns> 9x9 integer array representing a new sudoku solution</returns>
-        public void GenerateSolution()
+        private void GenerateSolution()
         {
             // Placeholder solution
             Solution = new int[9, 9]
@@ -42,7 +43,6 @@ namespace We_Doku.Models.Helpers
         /// </summary>
         public void GeneratePuzzle()
         {
-            GenerateSolution();
             // Logic to generate puzzle board using solution
             Puzzle = new int[9,9]
             {
@@ -57,6 +57,35 @@ namespace We_Doku.Models.Helpers
                 { 0, 0, 0, 0, 8, 0, 0, 7, 9 }
             };
             
+        }
+
+        public GameBoard BuildGameBoard()
+        {
+            GameBoard newboard = new GameBoard() { Placed = 81 };
+
+            for (int iy = 0; iy < 9; iy++)
+            {
+                for (int ix = 0; ix < 9; ix++)
+                {
+                    GameSpace newSpace = new GameSpace()
+                    {
+                        X = ix,
+                        Y = iy,
+                        Value = Solution[iy, ix],
+                        Masked = false
+                    };
+
+                    if (Puzzle[iy, ix] == 0)
+                    {
+                        newSpace.Masked = true;
+                        newboard.Placed--;
+                    }
+
+                    newboard.GameSpaces.Add(newSpace);
+                }
+            }
+            
+            return newboard;
         }
     }
 }
