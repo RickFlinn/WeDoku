@@ -1,0 +1,131 @@
+﻿@page
+@model We_Doku.Pages.FormModel
+@{
+    ViewData["Title"] = "Form";
+    Layout = "_Layout";
+
+}
+<head>
+<style>
+    .red {
+        color: red;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<h1>Form to generate on change form submit</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <select name="number">               
+                <option selected="selected">1</option>               
+                <option selected="selected">2</option>                             
+            </select>
+        </div>
+        <div class="col-sm">
+            <select name="number">
+                <option value="">Select a number</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+        <div class="col-sm">
+            <select name="number">
+                <option value="">Select a number</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <div class="dropdown">
+                <button class="dropbtn">Dropdown</button>
+                <div class="dropdown-content">
+                    <a href="#">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="dropdown">
+                <button class="dropbtn">Dropdown</button>
+                <div class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="dropdown">
+                <button class="dropbtn">Dropdown</button>
+                <div class="dropdown-content">
+                    <a href="#">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <div class="dropdown">
+                <button class="dropbtn">Dropdown</button>
+                <div class="dropdown-content">
+                    <a href="#">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="dropdown">
+                <button class="dropbtn">Dropdown</button>
+                <div class="dropdown-content">
+                    <a href="#">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="dropdown">
+                <button class="dropbtn">Dropdown</button>
+                <div class="dropdown-content">
+                    <a href="#">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*div will show red of contents*@
+
+
+<div class="red">
+
+</div>
+
+<script type="text/javascript">
+    $("select")
+        .change(function () {
+            var str = "";
+            $("select option:selected").each(function () {
+                str += $(this).text() + " ";
+            });
+            $(".red").text(str);
+        })
+        .change();
+</script>
