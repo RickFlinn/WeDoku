@@ -6,6 +6,9 @@
    
 }
 
+.ColorChange{
+    border: 10px solid red;
+}
 .container-fluid {
     width: 100%;
     padding-right: 15px;
@@ -62,4 +65,8 @@
 
 .dropdown:hover .dropbtn {
     background-color: cornflowerblue;
+}
+
+.ColorChange{
+    border: 10px solid red;
 }
