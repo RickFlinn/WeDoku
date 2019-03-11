@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using We_Doku.Models.Interfaces;
 
-namespace We_Doku.Models.Services
+namespace We_Doku.Models.Interfaces
 {
-    public class GameSpaceManager : IGameSpace
+    public interface IGameSpace
     {
-
     }
 }
