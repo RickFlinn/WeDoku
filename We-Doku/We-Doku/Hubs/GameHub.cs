@@ -10,7 +10,7 @@ namespace We_Doku.Hubs
     {
         public async Task SendCoordinate(int x, int y)
         {
-            await Clients.All.SendAsync("ReceiveMessage", x, y);
+            await Clients.All.SendAsync("UpdateSpace", x, y);
         }
     }
 }
