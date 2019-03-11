@@ -14,3 +14,7 @@ a{
     position: fixed;
     width:
 }
+
+.ColorChange{
+    border: 10px solid red;
+}
