@@ -51,9 +51,13 @@ namespace We_Doku
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            //app.UseSignalR(routes =>
+            //{
+            //    routes.MapHub<ChatHub>("/chathub");
+            //});
             app.UseSignalR(routes =>
             {
-                routes.MapHub<ChatHub>("/chathub");
+                routes.MapHub<GameHub>("/gamehub");
             });
 
             app.UseMvc();
