@@ -1,26 +1,34 @@
 ﻿@page
+@{
+    Layout = "_Layout";
+}
+<link rel="stylesheet" href="~/reset.css" />
+<link rel="stylesheet" href="~/Site.css" />
 <div class="container">
-    <div class="row">&nbsp;</div>
-    <div class="row">
-        <div class="col-6">&nbsp;</div>
-        <div class="col-6">
-            User..........<input type="text" id="userInput" />
-            <br />
-            Message...<input type="text" id="messageInput" />
-            <input type="button" id="sendButton" value="Send Message" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <hr />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-6">&nbsp;</div>
-        <div class="col-6">
-            <ul id="messagesList"></ul>
-        </div>
-    </div>
+    <table>
+        <tbody id="gameboard">
+            @*<tr>
+                <td id="00">
+                    <p>square 1</p>
+                    <input id="1x" value="0" type="hidden" />
+                    <input id="1y" value="0" type="hidden" />
+                    <button type="button" class="gsSubmit">
+                        This is a test to see if this button works and that I can access it.
+                    </button>
+                </td>
+                <td id="01">
+                    <p>square 2</p>
+                    <input value="0" type="hidden" />
+                    <input value="1" type="hidden" />
+                    <button type="button" class="gsSubmit">Click me</button>
+                </td>
+            </tr>*@
+        </tbody>
+    </table>
 </div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
 <script src="~/lib/signalr/dist/browser/signalr.js"></script>
-<script src="~/js/chat.js"></script>
+<script src="~/js/gameplay.js"></script>
+
