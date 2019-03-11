@@ -32,7 +32,9 @@ namespace We_Doku.Models.Services
 
         public async Task<GameBoard> GetGameBoard(int? id)
         {
-            return await _context.GameBoard.FirstOrDefaultAsync(h => h.ID == id);
+            return await _context.GameBoard
+                .Include(gs => gs.GameSpaces)
+                .FirstOrDefaultAsync(h => h.ID == id);
         }
 
         public async Task<IEnumerable<GameBoard>> GetGameBoard()
