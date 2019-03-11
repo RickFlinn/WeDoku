@@ -7,5 +7,11 @@ namespace We_Doku.Models
 {
     public class GameBoard
     {
+        public int ID { get; set; }
+        public int Placed { get; set;}
+
+        // Nav properties
+        public List<GameSpaces> GameSpaces { get; set; }
+
     }
 }
