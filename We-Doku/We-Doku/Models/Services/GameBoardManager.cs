@@ -19,20 +19,20 @@ namespace We_Doku.Models.Services
 
         public async Task CreateGameBoard(GameBoard gameBoard)
         {
-            _context.GameBoard.Add(gameBoard);
+            _context.GameBoards.Add(gameBoard);
             await _context.SaveChangesAsync();
         }
 
         public async Task DeleteGameBoard(int? id)
         {
-            GameBoard gameBoard = _context.GameBoard.FirstOrDefault(h => h.ID == id);
-            _context.GameBoard.Remove(gameBoard);
+            GameBoard gameBoard = _context.GameBoards.FirstOrDefault(h => h.ID == id);
+            _context.GameBoards.Remove(gameBoard);
             await _context.SaveChangesAsync();
         }
 
         public async Task<GameBoard> GetGameBoard(int? id)
         {
-            return await _context.GameBoard
+            return await _context.GameBoards
                 .Include(gs => gs.GameSpaces)
                 .FirstOrDefaultAsync(h => h.ID == id);
 
@@ -40,12 +40,12 @@ namespace We_Doku.Models.Services
 
         public async Task<IEnumerable<GameBoard>> GetGameBoard()
         {
-            return await _context.GameBoard.ToListAsync();
+            return await _context.GameBoards.ToListAsync();
         }
 
         public async Task UpdateGameSpace(GameBoard gameBoard)
         {
-            _context.GameBoard.Update(gameBoard);
+            _context.GameBoards.Update(gameBoard);
             await _context.SaveChangesAsync();
         }
     }
