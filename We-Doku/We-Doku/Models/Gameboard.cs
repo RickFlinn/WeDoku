@@ -11,7 +11,7 @@ namespace We_Doku.Models
         public int Placed { get; set;}
 
         // Nav properties
-        public List<GameSpaces> GameSpaces { get; set; }
+        public List<GameSpace> GameSpaces { get; set; }
 
     }
 }
