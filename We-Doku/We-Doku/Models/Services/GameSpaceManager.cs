@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace We_Doku.Models
+namespace We_Doku.Models.Services
 {
-    public class GameSpaces
+    public class GameSpaceManager
     {
-      
     }
 }
