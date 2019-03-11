@@ -17,32 +17,32 @@ namespace We_Doku.Models.Services
             _context = context;
         }
 
-        public async Task CreateGameSpaces(GameSpaces gameSpaces)
+        public async Task CreateGameSpace(GameSpace gameSpace)
         {
-            _context.GameSpaces.Add(gameSpaces);
+            _context.GameSpace.Add(gameSpace);
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteGameSpaces(int? id)
+        public async Task DeleteGameSpace(int? id)
         {
-            GameSpaces gameSpaces = _context.GameSpaces.FirstOrDefault();
-            _context.GameSpaces.Remove(gameSpaces);
+            GameSpace gameSpace = _context.GameSpace.FirstOrDefault();
+            _context.GameSpace.Remove(gameSpace);
             await _context.SaveChangesAsync();
         }
 
-        public async Task<GameSpaces> GetGameSpaces(int? id)
+        public async Task<GameSpace> GetGameSpace(int? id)
         {
-            return await _context.GameSpaces.FirstOrDefaultAsync();
+            return await _context.GameSpace.FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<GameSpaces>> GetGameSpaces()
+        public async Task<IEnumerable<GameSpace>> GetGameSpace()
         {
-            return await _context.GameSpaces.ToListAsync();
+            return await _context.GameSpace.ToListAsync();
         }
 
-        public async Task UpdateGameSpace(GameSpaces gameSpaces)
+        public async Task UpdateGameSpace(GameSpace gameSpace)
         {
-            _context.GameSpaces.Update(gameSpaces);
+            _context.GameSpace.Update(gameSpace);
             await _context.SaveChangesAsync();
         }
     }

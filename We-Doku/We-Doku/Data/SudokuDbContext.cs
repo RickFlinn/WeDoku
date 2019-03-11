@@ -22,6 +22,6 @@ namespace We_Doku.Data
 
         public DbSet<GameBoard> GameBoards { get; set; }
 
-        public DbSet<GameSpace> GameSpaces { get; set; }
+        public DbSet<GameSpace> GameSpace { get; set; }
     }
 }

@@ -8,17 +8,17 @@ namespace We_Doku.Models.Interfaces
     public interface IGameSpace
     {
         //Create 
-        Task CreateGameSpaces(GameSpaces gameSpaces);
+        Task CreateGameSpace (GameSpace gameSpace);
 
         //Delete
-        Task DeleteGameSpaces(int? id);
+        Task DeleteGameSpace(int? id);
 
         //Read
-        Task<GameSpaces> GetGameSpaces(int? id);
-        Task <IEnumerable<GameSpaces>> GetGameSpaces();
+        Task<GameSpace> GetGameSpace(int? id);
+        Task <IEnumerable<GameSpace>> GetGameSpace();
 
         //Update/Edit
-        Task UpdateGameSpace(GameSpaces gamespaces);
+        Task UpdateGameSpace(GameSpace gameSpace);
 
     }
 }
