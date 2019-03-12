@@ -38,15 +38,28 @@ namespace We_Doku.Models.Services
 
         }
 
-        public async Task<IEnumerable<GameBoard>> GetGameBoard()
+        public async Task<GameBoard> GetJustBoard(int id)
         {
-            return await _context.GameBoards.ToListAsync();
+            return await _context.GameBoards.FirstOrDefaultAsync(b => b.ID == id);
         }
 
-        public async Task UpdateGameSpace(GameBoard gameBoard)
+        public async Task<IEnumerable<GameBoard>> GetGameBoards()
         {
-            _context.GameBoards.Update(gameBoard);
-            await _context.SaveChangesAsync();
+            return await _context.GameBoards.Include(gs => gs.GameSpaces).ToListAsync();
         }
+
+        public async Task UpdateBoard(GameBoard gameBoard)
+        {
+            GameBoard current = await _context.GameBoards.Include(be => be.GameSpaces)
+                                                         .FirstOrDefaultAsync(gb => gb.ID == gameBoard.ID);
+            current.Placed = gameBoard.Placed;
+            current.GameSpaces = gameBoard.GameSpaces;
+
+            _context.GameBoards.Update(current);
+            await _context.SaveChangesAsync();
+
+            
+        }
+        
     }
 }

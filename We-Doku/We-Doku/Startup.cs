@@ -7,6 +7,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using We_Doku.Data;
 using We_Doku.Hubs;
+using We_Doku.Models.Interfaces;
+using We_Doku.Models.Services;
 
 namespace We_Doku
 {
@@ -35,7 +37,9 @@ namespace We_Doku
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddSignalR();
-            services.AddDbContext<SudokuDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultCnnection"]));
+            services.AddDbContext<SudokuDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
+            services.AddScoped<IGameBoard, GameBoardManager>();
+            services.AddScoped<IGameSpace, GameSpaceManager>();
 
         }
 

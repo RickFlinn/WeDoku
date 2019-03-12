@@ -8,11 +8,24 @@ document.getElementsByClassName("gsSubmit").disabled = true;
 connection.on("UpdateSpace", function (x, y) {
     //var msg = y.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     //var encodedMsg = x + " says " + msg;
-    console.log(x, 'x');
-    console.log(y, 'y');
+    console.log(x, ' x');
+    console.log(y, ' y');
+    console.log(""+ x + y);
+    var td = document.getElementById("" + x + y);
+    var p = document.getElementById("" + x + y + " p");
+    console.log(td, "td");
+    td.setAttribute('class', 'hideSquare');
+    p.setAttribute('class', 'un-hideSquare');
+});
+
+connection.on("ErrorMessage", function (x, y) {
+    //var msg = y.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    //var encodedMsg = x + " says " + msg;
+    console.log(x, ' x');
+    console.log(y, ' y');
     var td = document.getElementById("" + x + y);
     console.log(td);
-    td.setAttribute('class', 'ColorChange');
+    td.setAttribute('class', 'ColorChange2');
 });
 
 var createBoard = () => {
@@ -33,14 +46,14 @@ var createBoard = () => {
             yInput.setAttribute('id', id + 'y');
             yInput.setAttribute('type', 'hidden');
             yInput.setAttribute('value', j);
-            let button = document.createElement('button');
-            button.setAttribute('class', 'gsSubmit');
-            button.setAttribute('type', 'button');
-            button.setAttribute('id', id );
-            button.append('test');
+            let input = document.createElement('input');
+            input.setAttribute('class', 'gsSubmit');
+            input.setAttribute('type', 'number');
+            input.setAttribute('id', id );
+            input.append('test');
             column.appendChild(xInput);
             column.appendChild(yInput);
-            column.appendChild(button);
+            column.appendChild(input);
             row.appendChild(column);
         }
         board.appendChild(row);
@@ -49,7 +62,7 @@ var createBoard = () => {
 }
 
 connection.start().then(function () {
-    createBoard();
+    //createBoard();
     addSignalListeners();
     document.getElementsByClassName('gsSubmit').disabled = false;
     //document.getElementById("sendButton").disabled = false;
@@ -62,22 +75,21 @@ function addSignalListeners() {
     for (let i = 0; i < 9; i++) {
         for (let j = 0; j < 9; j++) {
             let id = '' + i + j;
-            $('#' + id).click(() => {
+            $('#' + id).change(() => {
                 console.log(this);
-                var x = document.getElementById(id + `x`).value;
-                var y = document.getElementById(id + `y`).value;
-
+                var x = document.getElementById(id + ` x`).value;
+                var y = document.getElementById(id + ` y`).value;
+                var boardID = document.getElementById(id + ' boardID').value;
+                var val = document.getElementById(id).value;
                 console.log(x);
                 console.log(y);
-                connection.invoke('SendCoordinate', x, y).catch(function (err) {
+                connection.invoke('SendCoordinate', x, y, boardID, val).catch(function (err) {
                     return console.error(err.toString());
                 });
             });
         }
-    }
-    
-
+    }   
 }
 
-$(document).ready(addSignalListeners);
+
 
