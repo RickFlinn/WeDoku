@@ -40,7 +40,7 @@ namespace We_Doku.Models.Services
 
         public async Task<IEnumerable<GameBoard>> GetGameBoards()
         {
-            return await _context.GameBoards.ToListAsync();
+            return await _context.GameBoards.Include(gs => gs.GameSpaces).ToListAsync();
         }
 
         public async Task UpdateGameSpace(GameBoard gameBoard)

@@ -22,8 +22,7 @@ namespace We_Doku.Pages
         public IndexModel(IGameBoard gameBoard)
         {
             _gameBoard = gameBoard;
-
-        }
+                    }
         public async Task OnGet()
         {
             IEnumerable<GameBoard> allBoards = await _gameBoard.GetGameBoards();

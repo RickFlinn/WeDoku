@@ -8,18 +8,19 @@ document.getElementsByClassName("gsSubmit").disabled = true;
 connection.on("UpdateSpace", function (x, y) {
     //var msg = y.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     //var encodedMsg = x + " says " + msg;
-    console.log(x, 'x');
-    console.log(y, 'y');
-    var td = document.getElementById("" + x + y);
-    console.log(td);
+    console.log(x, ' x');
+    console.log(y, ' y');
+    console.log(""+ x + y);
+    var td = document.getElementById("" + x + y + " col");
+    console.log(td, "td");
     td.setAttribute('class', 'ColorChange1');
 });
 
 connection.on("ErrorMessage", function (x, y) {
     //var msg = y.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     //var encodedMsg = x + " says " + msg;
-    console.log(x, 'x');
-    console.log(y, 'y');
+    console.log(x, ' x');
+    console.log(y, ' y');
     var td = document.getElementById("" + x + y);
     console.log(td);
     td.setAttribute('class', 'ColorChange2');
@@ -59,7 +60,7 @@ var createBoard = () => {
 }
 
 connection.start().then(function () {
-    createBoard();
+    //createBoard();
     addSignalListeners();
     document.getElementsByClassName('gsSubmit').disabled = false;
     //document.getElementById("sendButton").disabled = false;
@@ -74,8 +75,8 @@ function addSignalListeners() {
             let id = '' + i + j;
             $('#' + id).change(() => {
                 console.log(this);
-                var x = document.getElementById(id + `x`).value;
-                var y = document.getElementById(id + `y`).value;
+                var x = document.getElementById(id + ` x`).value;
+                var y = document.getElementById(id + ` y`).value;
                 var val = document.getElementById(id).value;
                 console.log(x);
                 console.log(y);
