@@ -1,4 +1,10 @@
-﻿footer {
+﻿body {
+    background-image: url("https://cdn12.picryl.com/photo/2016/12/31/wood-board-structure-backgrounds-textures-596a72-1024.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+footer {
     position: fixed;
     bottom: 0;
     color: white;
@@ -26,7 +32,7 @@
 }
 
 .dropbtn {
-    background-color:cornflowerblue;
+    background-color: black;
     color: white;
     padding: 16px;
     font-size: 16px;
@@ -107,6 +113,6 @@ tr:nth-child(3n) td {
 input {
     width: 4vw;
     height: 8vh;
+    font-size: 2.5em;
     text-align: center;
 }
-
