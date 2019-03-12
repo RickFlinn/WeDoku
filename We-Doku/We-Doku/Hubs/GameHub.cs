@@ -8,9 +8,20 @@ namespace We_Doku.Hubs
 {
     public class GameHub : Hub
     {
-        public async Task SendCoordinate(string x, string y)
+        public async Task SendCoordinate(string x, string y, string value)
         {
-            await Clients.All.SendAsync("UpdateSpace", x, y);
+            int input = Int32.Parse(value);
+            if (input < 10 && input > 0)
+            {
+                await Clients.All.SendAsync("UpdateSpace", x, y, value);
+            }
+
+            else
+            {
+                await Clients.All.SendAsync("ErrorMessage", x, y, value);
+
+            }
         }
+        
     }
 }
