@@ -50,8 +50,15 @@ namespace We_Doku.Models.Services
 
         public async Task UpdateBoard(GameBoard gameBoard)
         {
-            _context.GameBoards.Update(gameBoard);
+            GameBoard current = await _context.GameBoards.Include(be => be.GameSpaces)
+                                                         .FirstOrDefaultAsync(gb => gb.ID == gameBoard.ID);
+            current.Placed = gameBoard.Placed;
+            current.GameSpaces = gameBoard.GameSpaces;
+
+            _context.GameBoards.Update(current);
             await _context.SaveChangesAsync();
+
+            
         }
         
     }
