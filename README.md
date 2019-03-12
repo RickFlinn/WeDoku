@@ -29,3 +29,5 @@ An interactive multiplayer Sudoku platform that creates an environment where lik
 ## Schema
 
 ![SCHEMA]()
+
+ayy lmao
