@@ -74,3 +74,14 @@
 .ColorChange2 {
     border: 10px solid red;
 }
+
+table {
+    margin: 1em auto;
+}
+
+td {
+    height: 30px;
+    width: 30px;
+    border: 1px solid;
+    text-align: center;
+}
