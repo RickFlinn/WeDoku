@@ -18,11 +18,12 @@
                     <input id="@temp.X@temp.Y x" type="hidden" value="@temp.X" />
                     <input id="@temp.X@temp.Y y" type="hidden" value="@temp.Y" />
                     <input id="@temp.X@temp.Y boardID" type="hidden" size="2" value="@temp.GameBoardID" />
-                   @if (temp.Masked)
+                    @if (temp.Masked)
                     {
                         <input id="@temp.X@temp.Y" type="number" class="gsSubmit" />
+                        <p id="@temp.X@temp.Y p" class="hideSquare">@temp.Value</p>
                     }
-                    
+
                     else
                     {
                         <p>@temp.Value</p>
