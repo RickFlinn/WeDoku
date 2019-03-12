@@ -77,10 +77,11 @@ function addSignalListeners() {
                 console.log(this);
                 var x = document.getElementById(id + ` x`).value;
                 var y = document.getElementById(id + ` y`).value;
+                var boardID = document.getElementById(id + ' boardID').value;
                 var val = document.getElementById(id).value;
                 console.log(x);
                 console.log(y);
-                connection.invoke('SendCoordinate', x, y, val).catch(function (err) {
+                connection.invoke('SendCoordinate', x, y, boardID, val).catch(function (err) {
                     return console.error(err.toString());
                 });
             });
