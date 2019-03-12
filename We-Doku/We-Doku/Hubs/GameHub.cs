@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using We_Doku.Models;
+using We_Doku.Models.Helpers;
 using We_Doku.Models.Interfaces;
 
 namespace We_Doku.Hubs
@@ -38,9 +39,13 @@ namespace We_Doku.Hubs
                     if(board.Placed >= 81)
                     {
                         // board completion logic
+                        GridBuilder builder = new GridBuilder();
+                        board = builder.BuildGameBoard(bID);
+                        await _boardManager.UpdateBoard(board);
+                        await Clients.All.SendAsync("BoardComplete");
                     }
                     else
-                    {
+                    {                        
                         await _boardManager.UpdateBoard(board);
                         await Clients.All.SendAsync("UpdateSpace", x, y);
                     }

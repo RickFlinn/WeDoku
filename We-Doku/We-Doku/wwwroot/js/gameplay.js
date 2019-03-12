@@ -86,10 +86,8 @@ function addSignalListeners() {
                 });
             });
         }
-    }
-    
-
+    }   
 }
 
-$(document).ready(addSignalListeners);
+
 
