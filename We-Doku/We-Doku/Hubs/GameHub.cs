@@ -47,7 +47,7 @@ namespace We_Doku.Hubs
                     else
                     {                        
                         await _boardManager.UpdateBoard(board);
-                        await Clients.All.SendAsync("UpdateSpace", x, y);
+                        await Clients.All.SendAsync("UpdateSpace", x, y, value);
                     }
                 }
                 else
