@@ -1,4 +1,10 @@
-﻿footer {
+﻿body {
+    background-image: url("https://cdn12.picryl.com/photo/2016/12/31/wood-board-structure-backgrounds-textures-596a72-1024.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+footer {
     position: fixed;
     bottom: 0;
     color: white;
@@ -26,7 +32,7 @@
 }
 
 .dropbtn {
-    background-color:cornflowerblue;
+    background-color: black;
     color: white;
     padding: 16px;
     font-size: 16px;
@@ -73,4 +79,40 @@
 
 .ColorChange2 {
     border: 10px solid red;
+}
+
+table {
+    margin: 1em auto;
+}
+
+td {
+    height: 30px;
+    width: 30px;
+    border: 1px solid;
+    text-align: center;
+}
+
+    td:first-child {
+        border-left: solid;
+    }
+
+    td:nth-child(3n) {
+        border-right: solid;
+    }
+
+tr:first-child {
+    border-top: solid;
+    height: 20px;
+    width: 20px;
+}
+
+tr:nth-child(3n) td {
+    border-bottom: solid;
+}
+
+input {
+    width: 4vw;
+    height: 8vh;
+    font-size: 2.5em;
+    text-align: center;
 }
