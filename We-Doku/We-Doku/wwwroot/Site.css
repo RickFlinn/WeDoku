@@ -105,6 +105,8 @@ tr:nth-child(3n) td {
 }
 
 input {
-     width: 5vw;
-     height: 10vh;
+    width: 5vw;
+    height: 10vh;
+    text-align: center;
+    font-size: 3em;
 }
