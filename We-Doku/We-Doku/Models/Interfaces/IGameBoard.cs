@@ -19,6 +19,6 @@ namespace We_Doku.Models.Interfaces
 
 
         //Update/Edit
-        Task UpdateGameSpace(GameBoard gameBoard);
+        Task UpdateGameBoard(GameBoard gameBoard);
     }
 }

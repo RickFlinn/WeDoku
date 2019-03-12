@@ -15,7 +15,7 @@ namespace We_Doku.Models.Interfaces
 
         //Read
         Task<GameSpace> GetGameSpace(int? id);
-        Task <IEnumerable<GameSpace>> GetGameSpace();
+        Task <IEnumerable<GameSpace>> GetGameSpaceAsync();
 
         //Update/Edit
         Task UpdateGameSpace(GameSpace gameSpace);

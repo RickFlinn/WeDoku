@@ -33,9 +33,10 @@ namespace We_Doku.Models.Services
         public async Task<GameSpace> GetGameSpace(int? id)
         {
             return await _context.GameSpaces.FirstOrDefaultAsync();
+        
         }
 
-        public async Task<IEnumerable<GameSpace>> GetGameSpace()
+        public async Task<IEnumerable<GameSpace>> GetGameSpaceAsync()
         {
             return await _context.GameSpaces.ToListAsync();
         }
