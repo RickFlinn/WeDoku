@@ -15,7 +15,8 @@ namespace We_Doku.Models.Interfaces
 
         //Read
         Task<GameBoard> GetGameBoard(int? id);
-        Task<IEnumerable<GameBoard>> GetGameBoard();
+        Task<IEnumerable<GameBoard>> GetGameBoards();
+
 
         //Update/Edit
         Task UpdateGameSpace(GameBoard gameBoard);
