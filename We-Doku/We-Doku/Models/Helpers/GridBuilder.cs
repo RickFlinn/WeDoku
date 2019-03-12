@@ -157,9 +157,10 @@ namespace We_Doku.Models.Helpers
         ///    and marks them as masked if the corresponding Solution grid has a value of zero (is marked as masked). 
         /// </summary>
         /// <returns> A gameboard built using the Solution and Puzzle SudokuGrids.</returns>
-        public GameBoard BuildGameBoard()
+        public GameBoard BuildGameBoard(int id)
         {
-            GameBoard newboard = new GameBoard() { Placed = 81 };
+            GameBoard newboard = new GameBoard() { Placed = 81, ID = id };
+            newboard.GameSpaces = new List<GameSpace>();
 
             for (int iy = 0; iy < 9; iy++)
             {
@@ -167,6 +168,7 @@ namespace We_Doku.Models.Helpers
                 {
                     GameSpace newSpace = new GameSpace()
                     {
+                        GameBoardID = id,
                         X = ix,
                         Y = iy,
                         Value = Solution.Get(ix, iy),
@@ -178,7 +180,9 @@ namespace We_Doku.Models.Helpers
                         newSpace.Masked = true;
                         newboard.Placed--;
                     }
-
+                    //newboard = newboard;
+                    //newboard.GameSpaces = newboard.GameSpaces;
+                    //newSpace = newSpace;
                     newboard.GameSpaces.Add(newSpace);
                 }
             }
