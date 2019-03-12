@@ -1,4 +1,5 @@
 ﻿@page
+@model We_Doku.Pages.IndexModel
 @{
     Layout = "_Layout";
 }
@@ -7,6 +8,19 @@
 <div class="container">
     <table>
         <tbody id="gameboard">
+            @*@for (var i = 0; i < 9; i++)
+            {
+                <tr>
+             @for(var j = 0; j <9; j++)
+             {
+                 <td id="@Model.GameBoard.GameSpaces + "col"">
+                     <input id="@Model.GameBoard.GameSpaces + "x"" type="hidden" value=" @i" />
+                     <input id="@Model.GameBoard.GameSpaces + "y"" type="hidden" value="@j" />
+                     <input id="@Model.GameBoard.GameSpaces" type="number" class="gsSubmit" />
+                 </td>
+             }
+                </tr>
+            }*@
             @*<tr>
                 <td id="00">
                     <p>square 1</p>

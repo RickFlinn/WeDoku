@@ -38,7 +38,7 @@ namespace We_Doku.Models.Services
 
         }
 
-        public async Task<IEnumerable<GameBoard>> GetGameBoard()
+        public async Task<IEnumerable<GameBoard>> GetGameBoards()
         {
             return await _context.GameBoards.ToListAsync();
         }
