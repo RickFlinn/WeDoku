@@ -14,8 +14,9 @@ namespace We_Doku.Models.Interfaces
         Task DeleteGameSpace(int? id);
 
         //Read
-        Task<GameSpace> GetGameSpace(int? id);
-        Task <IEnumerable<GameSpace>> GetGameSpaceAsync();
+        Task<GameSpace> GetGameSpace(int x, int y, int boardID);
+        
+        Task <IEnumerable<GameSpace>> GetGameSpaces();
 
         //Update/Edit
         Task UpdateGameSpace(GameSpace gameSpace);

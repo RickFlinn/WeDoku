@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -30,13 +29,14 @@ namespace We_Doku.Models.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task<GameSpace> GetGameSpace(int? id)
+        public async Task<GameSpace> GetGameSpace(int x, int y, int boardID)
         {
-            return await _context.GameSpaces.FirstOrDefaultAsync();
-        
+            return await _context.GameSpaces.FirstOrDefaultAsync(gs => gs.X == x 
+                                                                    && gs.Y == y 
+                                                                    && gs.GameBoardID == boardID);
         }
 
-        public async Task<IEnumerable<GameSpace>> GetGameSpaceAsync()
+        public async Task<IEnumerable<GameSpace>> GetGameSpaces()
         {
             return await _context.GameSpaces.ToListAsync();
         }

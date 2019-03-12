@@ -11,9 +11,11 @@ connection.on("UpdateSpace", function (x, y) {
     console.log(x, ' x');
     console.log(y, ' y');
     console.log(""+ x + y);
-    var td = document.getElementById("" + x + y + " col");
+    var td = document.getElementById("" + x + y);
+    var p = document.getElementById("" + x + y + " p");
     console.log(td, "td");
-    td.setAttribute('class', 'ColorChange1');
+    td.setAttribute('class', 'hideSquare');
+    p.setAttribute('class', 'un-hideSquare');
 });
 
 connection.on("ErrorMessage", function (x, y) {
@@ -77,18 +79,17 @@ function addSignalListeners() {
                 console.log(this);
                 var x = document.getElementById(id + ` x`).value;
                 var y = document.getElementById(id + ` y`).value;
+                var boardID = document.getElementById(id + ' boardID').value;
                 var val = document.getElementById(id).value;
                 console.log(x);
                 console.log(y);
-                connection.invoke('SendCoordinate', x, y, val).catch(function (err) {
+                connection.invoke('SendCoordinate', x, y, boardID, val).catch(function (err) {
                     return console.error(err.toString());
                 });
             });
         }
-    }
-    
-
+    }   
 }
 
-$(document).ready(addSignalListeners);
+
 
