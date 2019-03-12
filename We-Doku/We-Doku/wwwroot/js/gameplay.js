@@ -12,7 +12,17 @@ connection.on("UpdateSpace", function (x, y) {
     console.log(y, 'y');
     var td = document.getElementById("" + x + y);
     console.log(td);
-    td.setAttribute('class', 'ColorChange');
+    td.setAttribute('class', 'ColorChange1');
+});
+
+connection.on("ErrorMessage", function (x, y) {
+    //var msg = y.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    //var encodedMsg = x + " says " + msg;
+    console.log(x, 'x');
+    console.log(y, 'y');
+    var td = document.getElementById("" + x + y);
+    console.log(td);
+    td.setAttribute('class', 'ColorChange2');
 });
 
 var createBoard = () => {

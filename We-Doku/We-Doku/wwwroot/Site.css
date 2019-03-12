@@ -67,6 +67,10 @@
     background-color: cornflowerblue;
 }
 
-.ColorChange{
+.ColorChange1{
+    border: 10px solid green;
+}
+
+.ColorChange2 {
     border: 10px solid red;
 }
