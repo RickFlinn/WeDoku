@@ -11,9 +11,11 @@ connection.on("UpdateSpace", function (x, y) {
     console.log(x, ' x');
     console.log(y, ' y');
     console.log(""+ x + y);
-    var td = document.getElementById("" + x + y + " col");
+    var td = document.getElementById("" + x + y);
+    var p = document.getElementById("" + x + y + " p");
     console.log(td, "td");
-    td.setAttribute('class', 'ColorChange1');
+    td.setAttribute('class', 'hideSquare');
+    p.setAttribute('class', 'un-hideSquare');
 });
 
 connection.on("ErrorMessage", function (x, y) {

@@ -80,7 +80,13 @@ footer {
 .ColorChange2 {
     border: 10px solid red;
 }
+.hideSquare {
+    display: none;
+}
 
+.unhideSquare {
+    display: inline-block;
+}
 table {
     margin: 1em auto;
 }
@@ -110,6 +116,12 @@ tr:nth-child(3n) td {
     border-bottom: solid;
 }
 
+.hideSquare{
+    display: none;
+}
+.un-hideSquare{
+    display: block;
+}
 input {
     width: 4vw;
     height: 8vh;
