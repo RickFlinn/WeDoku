@@ -48,13 +48,12 @@ namespace We_Doku.Models.Services
             return await _context.GameBoards.Include(gs => gs.GameSpaces).ToListAsync();
         }
 
-        public async Task UpdateBoard(GameBoard gameBoard)
+        public async Task UpdateGameBoard(GameBoard gameBoard)
         {
             GameBoard current = await _context.GameBoards.Include(be => be.GameSpaces)
                                                          .FirstOrDefaultAsync(gb => gb.ID == gameBoard.ID);
             current.Placed = gameBoard.Placed;
             current.GameSpaces = gameBoard.GameSpaces;
-
 
             _context.GameBoards.Update(current);
             await _context.SaveChangesAsync();
