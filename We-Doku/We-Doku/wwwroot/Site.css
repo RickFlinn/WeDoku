@@ -219,3 +219,11 @@ input {
         background-position: 0 -100%
     }
 }
+
+#avatar {
+    width: 15vw;
+}
+
+.authors {
+    text-align: center;
+}
