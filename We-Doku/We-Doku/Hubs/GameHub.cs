@@ -36,12 +36,13 @@ namespace We_Doku.Hubs
                     await _gsManager.UpdateGameSpace(spaceToUpdate);
                     GameBoard board = await _boardManager.GetJustBoard(bID);
                     board.Placed++;
-                    if(board.Placed >= 81)
+                    if(board.Placed >= 31)
                     {
                         // board completion logic
                         GridBuilder builder = new GridBuilder();
                         board = builder.BuildGameBoard(bID);
-                        await _boardManager.UpdateGameBoard(board);
+                        await _boardManager.UpdateBoard(board);
+                        await Clients.All.SendAsync("UpdateSpace", x, y, value);
                         await Clients.All.SendAsync("BoardComplete");
                     }
                     else

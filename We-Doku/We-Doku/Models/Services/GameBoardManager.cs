@@ -55,6 +55,7 @@ namespace We_Doku.Models.Services
             current.Placed = gameBoard.Placed;
             current.GameSpaces = gameBoard.GameSpaces;
 
+
             _context.GameBoards.Update(current);
             await _context.SaveChangesAsync();
 

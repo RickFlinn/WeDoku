@@ -147,10 +147,39 @@ input {
     animation: none;
 }
 .saltShaker {
+    background: url("beachheart.jpg") center;
     animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) infinite;
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
     perspective: 1000px;
+}
+
+#newButt {
+    padding: .3vw;
+    background-color: #fff;
+    padding-left: .7vw;
+    padding-right: .7vw;
+    border: solid 2px #000;
+    border-radius: .5em;
+    font-size: 20px;
+    max-width: 95%;
+}
+
+.win {
+    background: url("confetti.png") center;
+    animation: move linear 5s infinite;
+    z-index: 2;
+}
+#win-contain {
+    margin-top: 1vw;
+
+}
+#but-contain {
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 1vw;
+    font-size: 40px;
+    font-weight: bold;
 }
 
 @keyframes shake {
@@ -179,5 +208,14 @@ input {
 
     to {
         background-position: -100% 0
+    }
+}
+@keyframes fireworks {
+    from {
+        background-position: 0
+    }
+
+    to {
+        background-position: 0 -100%
     }
 }

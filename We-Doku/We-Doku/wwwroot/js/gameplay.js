@@ -5,6 +5,14 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/gamehub").build();
 document.getElementsByClassName("gsSubmit").disabled = true;
 //document.getElementById("sendButton").disabled = true;
 
+connection.on("BoardComplete", function () {
+    var table = document.getElementById("main")
+    var butt = document.getElementById("but-contain");
+    butt.setAttribute('class', 'un-hideSquare');
+    table.setAttribute('class', 'win');
+
+});
+
 connection.on("UpdateSpace", function (x, y) {
     console.log(x, ' x');
     console.log(y, ' y');
