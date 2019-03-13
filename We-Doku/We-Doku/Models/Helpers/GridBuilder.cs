@@ -17,6 +17,12 @@ namespace We_Doku.Models.Helpers
             GeneratePuzzle();
         }
 
+        public GridBuilder(int maxAttempts, int masked)
+        {
+            GenerateSolution(maxAttempts);
+            GeneratePuzzle(masked);
+        }
+
         /// <summary>
         ///     Generates a new 9x9 array representing a solved Sudoku board, and saves it as this GridBuilder's Solution grid.
         /// </summary>
@@ -84,7 +90,8 @@ namespace We_Doku.Models.Helpers
 
                 } else // No possible moves at this coordinate.
                 {
-                    attempts++;
+                    //attempts++;
+                    GenerateSolution(attemptMax);
                 }
             }
 
