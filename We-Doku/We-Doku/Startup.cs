@@ -29,7 +29,6 @@ namespace We_Doku
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.CheckConsentNeeded = context => true;
@@ -44,12 +43,11 @@ namespace We_Doku
                    .AddDefaultTokenProviders();
 
             // Add in the db context for identity user 
-
             services.AddSignalR();
             services.AddDbContext<SudokuDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
+            services.AddDbContext<ApplicationUserDbContext>(options =>options.UseSqlServer(Configuration["ConnectionStrings:LocalUserConnection"]));
             services.AddScoped<IGameBoard, GameBoardManager>();
             services.AddScoped<IGameSpace, GameSpaceManager>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,11 +55,10 @@ namespace We_Doku
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+               app.UseDeveloperExceptionPage();
             }
 
             app.UseHttpsRedirection();
-
             app.UseStaticFiles();
             app.UseCookiePolicy();
             //app.UseSignalR(routes =>
@@ -72,13 +69,14 @@ namespace We_Doku
             {
                 routes.MapHub<GameHub>("/gamehub");
             });
-
-            app.UseMvc();
-
-            //app.Run(async (context) =>
-            //{
-            //    await context.Response.WriteAsync("Hello World!");
-            //});
+           
+            app.UseMvc(route =>
+            {
+                route.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}"
+                    );
+            });
         }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace We_Doku.Models.ViewModels
 {
@@ -14,11 +10,7 @@ namespace We_Doku.Models.ViewModels
 
         [Required]
         [Display(Name = "Last Name")]
-        public string LastName { get; set; }
-
-        [Required]
-        [DataType(DataType.Date)]
-        public DateTime Birthday { get; set; }
+        public string LastName { get; set; }    
 
         [Required]
         [EmailAddress]
