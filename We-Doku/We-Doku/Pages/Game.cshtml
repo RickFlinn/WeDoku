@@ -22,7 +22,14 @@
     </nav>
 </header>
 <div class="container">
-    <table>
+    <div id="but-contain" class="hideSquare">
+        <div>You Win!!!</div>
+        <div id="win-contain">
+            <a asp-page="/Pages/Index" id="newButt">Start a New Game</a>
+        </div>
+    </div>
+
+    <table id="table-board">
         <tbody id="gameboard">
             @for (var i = 0; i < 9; i++)
             {
@@ -49,30 +56,26 @@
                     }
                 </tr>
             }
-            @*<tr>
-                    <td id="00">
-                        <p>square 1</p>
-                        <input id="1x" value="0" type="hidden" />
-                        <input id="1y" value="0" type="hidden" />
-                        <button type="button" class="gsSubmit">
-                            This is a test to see if this button works and that I can access it.
-                        </button>
-                    </td>
-                    <td id="01">
-                        <p>square 2</p>
-                        <input value="0" type="hidden" />
-                        <input value="1" type="hidden" />
-                        <button type="button" class="gsSubmit">Click me</button>
-                    </td>
-                </tr>*@
         </tbody>
     </table>
-</div>
-<footer>
-    <div class="container-fluid bg-dark">
-        This is the footer
+    <div id="component">
+        @await Component.InvokeAsync("Chat")
+
+
+        <div class="message-box-contain">
+            <div class="">
+                <div class="">
+                    <hr />
+                </div>
+            </div>
+            <div class="">
+                <div class="">
+                    <ul id="messagesList"></ul>
+                </div>
+            </div>
+        </div>
     </div>
-</footer>
+</div>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
