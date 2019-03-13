@@ -17,6 +17,12 @@ namespace We_Doku.Models.Helpers
             GeneratePuzzle();
         }
 
+        public GridBuilder(int masked)
+        {
+            GenerateSolutionRecursively();
+            GeneratePuzzle(masked);
+        }
+
         public GridBuilder(int maxAttempts, int masked)
         {
             GenerateSolution(maxAttempts);
@@ -47,11 +53,10 @@ namespace We_Doku.Models.Helpers
         /// <summary>
         ///   Attempts to generate a new, solved, randomized SudokuGrid to represent the Sudoku solution,
         ///    and saves it as this GridBuilder's Solution.
-        ///   Takes in an integer representing the maximum number of failed tries to randomly place a new value before the 
-        ///   method will call itself, cleaning the Solution board and starting again. 
+        ///   Takes in an integer representing the number of attempts to generate a solution before a placeholder grid will be used.
         /// </summary>
-        /// <param name="attemptMax"> Number of failed attempts to place a value before the method will "restart". </param>
-        private void GenerateSolution(int attemptMax)
+        /// <param name="attemptMax"> Number of failed attempts to generate a board allowed before a placeholder will be used. </param>
+        private void GenerateSolution(int maxAttempts)
         {
             HashSet<Tuple<int, int>> EmptyCoords = new HashSet<Tuple<int, int>>();
             for(int i = 0; i < 9; i++)
@@ -61,19 +66,17 @@ namespace We_Doku.Models.Helpers
                     EmptyCoords.Add(new Tuple<int, int>(i, j));
                 }
             }
+
+            if (EmptyCoords.Count != 81)
+                throw new Exception("Problem generating possible coordinates in GenerateSolution.");
             
             Solution = new SudokuGrid();
             int placed = 0;
-            int attempts = 0;
+            
             Random rand = new Random();
 
-            while (EmptyCoords.Count > 0 && attempts < attemptMax)
-            //while(placed < 81 && attempts < 500)
+            while (EmptyCoords.Count > 0)
             {
-                
-                //int rx = rand.Next(0, 8);
-                //int ry = rand.Next(0, 8);
-
                 Tuple<int, int> randCoord = EmptyCoords.ElementAt(rand.Next(EmptyCoords.Count));
                 int rx = randCoord.Item1;
                 int ry = randCoord.Item2;
@@ -90,19 +93,86 @@ namespace We_Doku.Models.Helpers
 
                 } else // No possible moves at this coordinate.
                 {
-                    //attempts++;
-                    GenerateSolution(attemptMax);
+                    if(maxAttempts > 0)
+                    {
+                        GenerateSolution(maxAttempts - 1);
+
+                    } else
+                    {
+                        GenerateSolution();
+                    }
+                }
+            }
+            Console.Write("ay");
+        }
+
+        public void GenerateSolutionRecursively()
+        {
+            Solution = new SudokuGrid();
+
+            HashSet<Tuple<int, int>> AllCoords = new HashSet<Tuple<int, int>>();
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    AllCoords.Add(new Tuple<int, int>(i, j));
                 }
             }
 
-            // If we still haven't filled the board, restarts the solution generation process from a clean slate. 
-            if(placed < 81)
+            Queue<Tuple<int, int>> emptySpaces = new Queue<Tuple<int, int>>();
+            Random rand = new Random();
+            while (AllCoords.Count > 0)
             {
-                GenerateSolution();
+                Tuple<int, int> randCoord = AllCoords.ElementAt(rand.Next(AllCoords.Count));
+                AllCoords.Remove(randCoord);
+                emptySpaces.Enqueue(randCoord);
             }
 
-            
+
+            if (!GenSolutionRec(emptySpaces))
+                throw new Exception("It asplode");
         }
+
+        public bool GenSolutionRec(Queue<Tuple<int, int>> emptySpaces)
+        {
+            
+            Random rand = new Random();
+            Tuple<int, int> randCoord = emptySpaces.Dequeue();
+            int rx = randCoord.Item1;
+            int ry = randCoord.Item2;
+            
+
+            int[] possibleValues = Solution.LegalValues(rx, ry);
+
+            if(possibleValues.Length > 0)
+            {
+
+                if (emptySpaces.Count < 1)
+                {   // Base case found - we completed the board! This should return true all the way up the chain, signaling that we've done it.
+                    Solution.Set(rx, ry, possibleValues[0]);
+                    return true;
+                }  
+                
+                foreach (int val in possibleValues)
+                {
+                    Solution.Set(rx, ry, val);
+                    
+                    // Okay, we need to keep adding values to our board. Make a recursive call. If it returns true, somewhere down the line we've found our 
+                    //  "solved" base case - keep passing true back up!
+                    if (GenSolutionRec(emptySpaces))
+                    {   
+                        return true;
+                    }
+                }
+                
+            }
+            // No possible solutions with this board state could be found; add the coordinate back to the set of empties, reset that coordinate on the solution grid,
+            //    and return false (go back).
+            emptySpaces.Enqueue(randCoord);
+            Solution.Set(rx, ry, 0);
+            return false;
+        }
+
 
         /// <summary>
         ///     Generates and saves a new 9x9 solution board. Corresponds to the prebuilt placeholder created by GenerateSolution.
@@ -128,7 +198,7 @@ namespace We_Doku.Models.Helpers
         /// <summary>
         ///    Takes in an integer representing the number of items to randomly mask. 
         ///    Copies the Solution grid to a new Puzzle grid, and then randomly selects the specified number of values
-        ///     to mask (change to value of zero) to build an incomplete puzzle sudoku board.
+        ///     to mask (change to value of zero) to build a puzzle sudoku board.
         ///    Sets this newly created SudokuGrid as the Puzzle grid for this builder. 
         /// </summary>
         /// <param name="masked"> Number of items to randomly mask </param>
@@ -187,9 +257,7 @@ namespace We_Doku.Models.Helpers
                         newSpace.Masked = true;
                         newboard.Placed--;
                     }
-                    //newboard = newboard;
-                    //newboard.GameSpaces = newboard.GameSpaces;
-                    //newSpace = newSpace;
+                    
                     newboard.GameSpaces.Add(newSpace);
                 }
             }
