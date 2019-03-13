@@ -12,7 +12,7 @@
             <a asp-page="/Pages/Index" id="newButt">Start a New Game</a>
         </div>
     </div>
-    @await Component.InvokeAsync("Chat")
+
     <table id="table-board">
         <tbody id="gameboard">
             @for (var i = 0; i < 9; i++)
@@ -42,8 +42,23 @@
             }
         </tbody>
     </table>
+    <div id="component">
+        @await Component.InvokeAsync("Chat")
 
 
+        <div class="message-box-contain">
+            <div class="">
+                <div class="">
+                    <hr />
+                </div>
+            </div>
+            <div class="">
+                <div class="">
+                    <ul id="messagesList"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
