@@ -41,12 +41,12 @@ namespace We_Doku.Hubs
                         // board completion logic
                         GridBuilder builder = new GridBuilder();
                         board = builder.BuildGameBoard(bID);
-                        await _boardManager.UpdateBoard(board);
+                        await _boardManager.UpdateGameBoard(board);
                         await Clients.All.SendAsync("BoardComplete");
                     }
                     else
                     {                        
-                        await _boardManager.UpdateBoard(board);
+                        await _boardManager.UpdateGameBoard(board);
                         await Clients.All.SendAsync("UpdateSpace", x, y, value);
                     }
                 }

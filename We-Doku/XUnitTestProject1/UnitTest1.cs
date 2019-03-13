@@ -223,9 +223,8 @@ namespace XUnitTestProject1
                 //Act
                 GameSpaceManager GSM = new GameSpaceManager(context);
                 await GSM.CreateGameSpace(gameSpace);
-                await GSM.GetGameSpace(1);
+                GameSpace result = await GSM.GetGameSpace(gameSpace.X, gameSpace.Y, gameSpace.GameBoardID);
 
-                var result = context.GameSpaces.FirstOrDefault(g => g.X == 1 && g.Y == 2 && g.Value == 3 && g.Masked && g.GameBoardID == 1);
 
                 Assert.Equal(gameSpace, result);
             }
