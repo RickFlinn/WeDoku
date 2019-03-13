@@ -29,14 +29,14 @@
             <div class="white-panel">
                 <div class="login-show">
                     <h2>LOGIN</h2>
-                    <input type="text" asp-for="Email" placeholder="Email" />
+                    @*<input type="text" asp-for="Email" placeholder="Email" />
                     <input type="password" asp-for="Password" placeholder="password" />
-                    <button type="submit" asp-controller="Account" asp-action="Login" value="Login" />
+                    <button type="submit" asp-controller="Account" asp-action="Login" value="Login" />*@
                     <a href="">Forgot Password</a>
                 </div>
             </div>
         </form>
-        <div class="Dark-panel">
+        @*<div class="Dark-panel">
             <div class=" register-show">
                 <form method="post">
                     <h2>REGISTER</h2>
@@ -46,9 +46,9 @@
                     <input type="password" asp-for="Password" placeholder="Password" />
                     <input type="password" asp-for="ConfirmPassword" placeholder="Confirm Password" />
                     <button type="submit" id="btnShowForm" asp-controller="Account" asp-action="Register" />
-                </form>
-            </div>
-        </div>
+                </form>*@
+            @*</div>*@
+        @*</div>*@
     </div>
 
 </body>
@@ -61,7 +61,9 @@
         crossorigin="anonymous"></script>
 <script>
     $(document).ready(function () {
+        
         $("#move").click(function () {
+            console.log('click register');
             $(".white-panel").animate({ right: '250px' });
         });
     });
