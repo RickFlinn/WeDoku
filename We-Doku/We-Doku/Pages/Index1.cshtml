@@ -1,0 +1,68 @@
+﻿@page
+@model We_Doku.Pages.IndexModel
+@{
+    Layout = "_Layout";
+}
+<link rel="stylesheet" href="~/reset.css" />
+<link rel="stylesheet" href="~/Site.css" />
+<div class="container">
+    <div id="but-contain" class="hideSquare">
+        <div>You Win!!!</div>
+        <div id="win-contain">
+            <a asp-page="/Pages/Index" id="newButt">Start a New Game</a>
+        </div>
+    </div>
+
+    <table id="table-board">
+        <tbody id="gameboard">
+            @for (var i = 0; i < 9; i++)
+            {
+                <tr>
+                    @for (var j = 0; j < 9; j++)
+                    {
+                        var temp = @Model.GameBoard.GameSpaces.ElementAt((i * 9) + j);
+                        <td id="@temp.X@temp.Y col">
+                            <input id="@temp.X@temp.Y x" type="hidden" value="@temp.X" />
+                            <input id="@temp.X@temp.Y y" type="hidden" value="@temp.Y" />
+                            <input id="@temp.X@temp.Y boardID" type="hidden" size="2" value="@temp.GameBoardID" />
+                            @if (temp.Masked)
+                            {
+                                <input id="@temp.X@temp.Y" type="number" class="gsSubmit" />
+                                <p id="@temp.X@temp.Y p" class="hideSquare">@temp.Value</p>
+                            }
+
+                            else
+                            {
+                                <p>@temp.Value</p>
+                            }
+
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div id="component">
+        @await Component.InvokeAsync("Chat")
+
+
+        <div class="message-box-contain">
+            <div class="">
+                <div class="">
+                    <hr />
+                </div>
+            </div>
+            <div class="">
+                <div class="">
+                    <ul id="messagesList"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="~/lib/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/gameplay.js"></script>
+

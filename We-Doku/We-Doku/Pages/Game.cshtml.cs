@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using We_Doku.Models;
+using We_Doku.Models.Helpers;
 using We_Doku.Models.Interfaces;
 
 namespace We_Doku.Pages
@@ -28,5 +29,6 @@ namespace We_Doku.Pages
             IEnumerable<GameBoard> allBoards = await _gameBoard.GetGameBoards();
             GameBoard = allBoards.FirstOrDefault();
         }
+
     }
 }

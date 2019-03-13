@@ -1,9 +1,17 @@
-﻿body {
+﻿@import url('https://fonts.googleapis.com/css?family=Mukta');
+body {
     background-image: url("https://cdn12.picryl.com/photo/2016/12/31/wood-board-structure-backgrounds-textures-596a72-1024.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    z-index: 0;
 }
 
+p{
+    color: #000;
+    padding-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
 footer {
     position: fixed;
     bottom: 0;
@@ -13,8 +21,9 @@ footer {
 }
 
 .ColorChange{
-    border: 10px solid red;
+    border: 10px solid black;
 }
+
 .container-fluid {
     width: 100%;
     padding-right: 15px;
@@ -22,11 +31,13 @@ footer {
     margin-right: auto;
     margin-left: auto;
     padding: 1vw;
+    min-width: 500px;
 }
 
 .row {
     border: 1px solid black;
 }
+
 .col-sm {
     border-right: 1px solid black;
 }
@@ -54,16 +65,16 @@ footer {
     z-index: 1;
 }
 
-    .dropdown-content a {
+.dropdown-content a {
         color: black;
         padding: 12px 16px;
         text-decoration: none;
         display: block;
     }
 
-        .dropdown-content a:hover {
-            background-color: #f1f1f1
-        }
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
 
 .dropdown:hover .dropdown-content {
     display: block;
@@ -80,6 +91,7 @@ footer {
 .ColorChange2 {
     border: 10px solid red;
 }
+
 .hideSquare {
     display: none;
 }
@@ -87,56 +99,142 @@ footer {
 .unhideSquare {
     display: inline-block;
 }
+
 table {
+    background: url("beachheart.jpg") center;
+    /*animation: move linear 10s infinite;*/
     margin: 1em auto;
+    min-width: 350px;
+    min-height: 610px;
 }
 
 td {
-    height: 30px;
-    width: 30px;
+    height: 4vw;
+    width: 4vw;
+    min-height: 20px;
     border: 1px solid;
     text-align: center;
 }
 
-    td:first-child {
-        border-left: solid;
+td:first-child {
+        border-left: solid black;
     }
 
-    td:nth-child(3n) {
-        border-right: solid;
+td:nth-child(3n) {
+        border-right: solid black;
     }
 
 tr:first-child {
-    border-top: solid;
+    border-top: solid black;
     height: 20px;
     width: 20px;
 }
 
 tr:nth-child(3n) td {
-    border-bottom: solid;
+    border-bottom: solid black;
 }
 
 .hideSquare{
     display: none;
 }
+
 .un-hideSquare{
     display: block;
 }
+
 input {
-    width: 4vw;
-    height: 8vh;
-    font-size: 2.5em;
+    width: 100%;
+    height: 100%;
+    min-height: 20px;
+    font-size: 1.5em;
     text-align: center;
     background-repeat: no-repeat;
 }
-
-.BOARD:hover {
-    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+.nosalt{
+    animation: none;
+}
+.saltShaker {
+    background: url("beachheart.jpg") center;
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) infinite;
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
     perspective: 1000px;
 }
 
+#newButt {
+    padding: .3vw;
+    background-color: #fff;
+    padding-left: .7vw;
+    padding-right: .7vw;
+    border: solid 2px #000;
+    border-radius: .5em;
+    font-size: 20px;
+    max-width: 95%;
+}
+
+.win {
+    background: url("confetti.png") center;
+    animation: move linear 5s infinite;
+    z-index: 2;
+}
+#win-contain {
+    margin-top: 1vw;
+
+}
+
+#but-contain {
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 1vw;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+/******************************Chat box*************************/
+
+.mess-contain{
+    margin: 0 auto;
+}
+.message-box-contain {
+    background: url("chatroom.jpg") center;
+    height: 180px;
+    width: 25vw;
+    min-width: 300px;
+    overflow: auto;
+    margin-bottom: 4vw;
+}
+#component {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    width: 50vw;
+    min-width: 500px;
+
+}
+
+.messenger{
+    width: 300px;
+}
+
+.send-button{
+    margin-top: 1vw;
+}
+
+@media (max-width: 669px) {
+
+    #component {
+        margin-top: 2vw;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        min-width: 300px;
+    }
+    .messenger {
+        min-width: 300px;
+    }
+
+
+}
 @keyframes shake {
     10%, 90% {
         transform: translate3d(-1px, 0, 0);
@@ -152,5 +250,209 @@ input {
 
     40%, 60% {
         transform: translate3d(4px, 0, 0);
+    }
+}
+
+/*Logic form thead login command registration*/ 
+
+.login-body{
+    font-family: 'Mukta', sans-serif;
+    height: 100vh;
+    min-height: 550px;
+    background-color: antiquewhite;
+    position: center;
+    overflow-y: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: #444444;
+
+}
+
+.login-reg-panel {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    width: 70%;
+    right: 0;
+    left: 0;
+    margin: auto;
+    height: 400px;
+    background-color: rgba(236, 48, 20, 0.9);
+}
+
+.white-panel {
+    background-color: darkslategray;
+    height: 500px;
+    position: absolute;
+    top: -50px;
+    width: 50%;
+    right: calc(50% - 50px);
+    transition: .3s ease-in-out;
+    z-index: 0;
+    box-shadow: 0 0 15px 9px #00000096;
+}
+.Dark-panel {
+    background-color: darkslategray;
+    height: 500px;
+    position: absolute;
+    top: -50px;
+    left: 33vw;
+    width: 50%;
+    right: calc(50% - 50px);
+    transition: .3s ease-in-out;
+    z-index: 0;
+    box-shadow: 0 0 15px 9px #00000096;
+}
+
+.login-reg-panel input[type="radio"] {
+    position: relative;
+    display: none;
+}
+
+.login-reg-panel {
+    color: #B8B8B8;
+    margin-top: 18vw;
+}
+
+.login-reg-panel #label-login,
+.login-reg-panel #label-register {
+    border: 1px solid #9E9E9E;
+    padding: 5px 5px;
+    width: 150px;
+    display: block;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 18px;
+ }
+
+.login-info-box {
+    width: 30%;
+    padding: 0 50px;
+    top: 20%;
+    left: 0;
+    position: absolute;
+    text-align: left;
+}
+
+.register-info-box {
+    width: 30%;
+    padding: 0 50px;
+    top: 20%;
+    right: 0;
+    position: absolute;
+    text-align: left;
+}
+
+.right-log {
+    right: 50px !important;
+}
+
+.login-show,
+.register-show {
+    z-index: 1;
+    /*display: none;
+    opacity: 0;*/
+    transition: 0.3s ease-in-out;
+    color: #242424;
+    text-align: left;
+    padding: 50px;
+}
+
+.show-log-panel {
+    display: block;
+    opacity: 0.9;
+}
+
+.login-show input[type="text"], .login-show input[type="password"] {
+    width: 100%;
+    display: block;
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #b5b5b5;
+    outline: none;
+}
+
+.login-show input[type="button"] {
+    max-width: 150px;
+    width: 100%;
+    background: #444444;
+    color: #f9f9f9;
+    border: none;
+    padding: 10px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    float: right;
+    cursor: pointer;
+}
+
+.login-show a {
+    display: inline-block;
+    padding: 10px 0;
+}
+
+.register-show input[type="text"], .register-show input[type="password"] {
+    width: 100%;
+    display: block;
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #b5b5b5;
+    outline: none;
+}
+
+.register-show input[type="button"] {
+    max-width: 150px;
+    width: 100%;
+    background: #444444;
+    color: #f9f9f9;
+    border: none;
+    padding: 10px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    float: right;
+    cursor: pointer;
+}
+
+.credit {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: #3B3B25;
+    margin: 0;
+    padding: 0;
+    font-family: Arial,sans-serif;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    z-index: 99;
+}
+
+a {
+    text-decoration: none;
+    color: #2c7715;
+}
+/*animation: move linear 10s infinite;*/
+
+@keyframes move {
+    from {
+        background-position: 0
+    }
+
+    to {
+        background-position: -100% 0
+    }
+}
+@keyframes fireworks {
+    from {
+        background-position: 0
+    }
+
+    to {
+        background-position: 0 -100%
     }
 }
