@@ -23,6 +23,7 @@ namespace We_Doku.Models.Helpers
         /// <returns> 9x9 integer array representing a new sudoku solution</returns>
         private void GenerateSolution()
         {
+
             // Placeholder solution
             Solution.Grid = new int[9, 9]
             {
