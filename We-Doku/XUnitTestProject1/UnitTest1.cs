@@ -231,11 +231,15 @@ namespace XUnitTestProject1
 
         }
 
+        [Fact]
+        public void CanGetGameBoardID()
+        {
+            GameBoard gameBoard = new GameBoard();
 
+            gameBoard.ID = 1;
 
-
-
-
+            GameBoard.Equals(1, gameBoard.ID);
+        }
 
 
 
