@@ -48,5 +48,6 @@ namespace We_Doku.Models.Services
             _context.GameBoards.Update(gameBoard);
             await _context.SaveChangesAsync();
         }
+
     }
 }
