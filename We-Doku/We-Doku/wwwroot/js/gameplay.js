@@ -5,6 +5,9 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/gamehub").build();
 document.getElementsByClassName("gsSubmit").disabled = true;
 //document.getElementById("sendButton").disabled = true;
 
+//Disable send button until connection is established
+document.getElementById("sendButton").disabled = true;
+
 connection.on("BoardComplete", function () {
     var table = document.getElementById("main")
     var butt = document.getElementById("but-contain");
@@ -35,6 +38,14 @@ connection.on("ErrorMessage", function (x, y) {
     console.log(td);
     td.setAttribute('class', 'ColorChange2');
     table.setAttribute('class', 'saltShaker');
+});
+
+connection.on("ReceiveMessage", function (user, message) {
+    var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    var encodedMsg = user + " says " + msg;
+    var li = document.createElement("li");
+    li.textContent = encodedMsg;
+    document.getElementById("messagesList").appendChild(li);
 });
 
 var createBoard = () => {
@@ -74,7 +85,7 @@ connection.start().then(function () {
     //createBoard();
     addSignalListeners();
     document.getElementsByClassName('gsSubmit').disabled = false;
-    //document.getElementById("sendButton").disabled = false;
+    document.getElementById("sendButton").disabled = false;
 }).catch(function (err) {
     return console.error(err.toString());
 });
@@ -97,9 +108,41 @@ function addSignalListeners() {
                 });
             });
         }
-    }   
+    }
+    document.getElementById("sendButton").addEventListener("submit", function (event) {
+        var user = document.getElementById("userInput").value;
+        var message = document.getElementById("messageInput").value;
+        connection.invoke("SendMessage", user, message).catch(function (err) {
+            return console.error(err.toString());
+        });
+    });
 
 }
 
+//Disable send button until connection is established
+document.getElementById("sendButton").disabled = true;
+
+//connection.on("ReceiveMessage", function (user, message) {
+//    var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+//    var encodedMsg = user + " says " + msg;
+//    var li = document.createElement("li");
+//    li.textContent = encodedMsg;
+//    document.getElementById("messagesList").appendChild(li);
+//});
+
+//connection.start().then(function () {
+//    document.getElementById("sendButton").disabled = false;
+//}).catch(function (err) {
+//    return console.error(err.toString());
+//});
+
+//document.getElementById("sendButton").addEventListener("click", function (event) {
+//    var user = document.getElementById("userInput").value;
+//    var message = document.getElementById("messageInput").value;
+//    connection.invoke("SendMessage", user, message).catch(function (err) {
+//        return console.error(err.toString());
+//    });
+//    event.preventDefault();
+//});
 
 

@@ -20,6 +20,11 @@ namespace We_Doku.Hubs
             _gsManager = gsManager;
         }
 
+        public async Task SendMessage(string user, string message)
+        {
+            await Clients.All.SendAsync("ReceiveMessage", user, message);
+        }
+
         public async Task SendCoordinate(string x, string y, string boardID, string value)
         {
             int input = int.Parse(value);
