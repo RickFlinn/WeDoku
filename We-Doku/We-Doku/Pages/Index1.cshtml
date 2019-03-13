@@ -5,27 +5,11 @@
 }
 <link rel="stylesheet" href="~/reset.css" />
 <link rel="stylesheet" href="~/Site.css" />
-<header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/Game">WEDOKU</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link" href="/Game">Play WEDOKU<span class="sr-only"></span></a>
-                <a class="nav-item nav-link" href="/AboutUs">About us</a>
-                <a class="nav-item nav-link" href="/Game">Profile</a>
-                <a class="nav-item nav-link" href="/Lobby">Lobby</a>
-            </div>
-        </div>
-    </nav>
-</header>
 <div class="container">
     <div id="but-contain" class="hideSquare">
         <div>You Win!!!</div>
         <div id="win-contain">
-            <a href='/Game' id="newButt">Start a New Game</a>
+            <a asp-page="/Pages/Index" id="newButt">Start a New Game</a>
         </div>
     </div>
 

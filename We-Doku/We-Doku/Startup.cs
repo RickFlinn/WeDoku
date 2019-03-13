@@ -45,7 +45,7 @@ namespace We_Doku
             // Add in the db context for identity user 
             services.AddSignalR();
             services.AddDbContext<SudokuDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
-            services.AddDbContext<ApplicationUserDbContext>(options =>options.UseSqlServer(Configuration["ConnectionStrings:LocalUserConnection"]));
+            services.AddDbContext<ApplicationUserDbContext>(options =>options.UseSqlServer(Configuration["ConnectionStrings:ProductionConnection"]));
             services.AddScoped<IGameBoard, GameBoardManager>();
             services.AddScoped<IGameSpace, GameSpaceManager>();
         }
@@ -61,10 +61,10 @@ namespace We_Doku
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-            //app.UseSignalR(routes =>
-            //{
-            //    routes.MapHub<ChatHub>("/chathub");
-            //});
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<ChatHub>("/chathub");
+            });
             app.UseSignalR(routes =>
             {
                 routes.MapHub<GameHub>("/gamehub");

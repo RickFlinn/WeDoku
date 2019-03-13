@@ -20,6 +20,11 @@ namespace We_Doku.Hubs
             _gsManager = gsManager;
         }
 
+        public async Task SendMessage(string user, string message)
+        {
+            await Clients.All.SendAsync("ReceiveMessage", user, message);
+        }
+
         public async Task SendCoordinate(string x, string y, string boardID, string value)
         {
             int input = int.Parse(value);
@@ -36,7 +41,7 @@ namespace We_Doku.Hubs
                     await _gsManager.UpdateGameSpace(spaceToUpdate);
                     GameBoard board = await _boardManager.GetJustBoard(bID);
                     board.Placed++;
-                    if (board.Placed >= 31)
+                    if (board.Placed >= 81)
                     {
                         // board completion logic
                         GridBuilder builder = new GridBuilder();
