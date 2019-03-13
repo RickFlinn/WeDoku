@@ -241,6 +241,57 @@ namespace XUnitTestProject1
             GameBoard.Equals(1, gameBoard.ID);
         }
 
+        [Fact]
+        public void CanSetGameBoardID()
+        {
+            GameBoard gameBoard = new GameBoard();
+            gameBoard.ID = 2;
+            gameBoard.ID = 1;
+
+            GameBoard.Equals(1, gameBoard.ID);
+        }
+
+        [Fact]
+        public void CanGetGameBoardPlaced()
+        {
+            GameBoard gameBoard = new GameBoard();
+
+            gameBoard.Placed = 1;
+
+            GameBoard.Equals(1, gameBoard.Placed);
+        }
+
+        [Fact]
+        public void CanSetGameBoardPlaced()
+        {
+            GameBoard gameBoard = new GameBoard();
+            gameBoard.Placed = 2;
+            gameBoard.Placed = 1;
+
+            GameBoard.Equals(1, gameBoard.Placed);
+        }
+
+        [Fact]
+        public void CanGetGameSpaceX()
+        {
+            GameSpace gameSpace = new GameSpace();
+            gameSpace.X = 1;
+
+            GameSpace.Equals(1, gameSpace.X);
+        }
+
+        [Fact]
+        public void CanSetGameSpaceX()
+        {
+            GameSpace gameSpace = new GameSpace();
+            gameSpace.X = 2;
+            gameSpace.X = 1;
+
+            GameSpace.Equals(1, gameSpace.X);
+        }
+
+
+
 
 
 
