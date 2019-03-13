@@ -6,26 +6,27 @@ document.getElementsByClassName("gsSubmit").disabled = true;
 //document.getElementById("sendButton").disabled = true;
 
 connection.on("UpdateSpace", function (x, y) {
-    //var msg = y.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    //var encodedMsg = x + " says " + msg;
     console.log(x, ' x');
     console.log(y, ' y');
     console.log(""+ x + y);
     var td = document.getElementById("" + x + y);
     var p = document.getElementById("" + x + y + " p");
+    var table = document.getElementById("table-board")
     console.log(td, "td");
     td.setAttribute('class', 'hideSquare');
     p.setAttribute('class', 'un-hideSquare');
+    table.setAttribute('class', 'nosalt');
+
 });
 
 connection.on("ErrorMessage", function (x, y) {
-    //var msg = y.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    //var encodedMsg = x + " says " + msg;
     console.log(x, ' x');
     console.log(y, ' y');
     var td = document.getElementById("" + x + y);
+    var table = document.getElementById("table-board")
     console.log(td);
     td.setAttribute('class', 'ColorChange2');
+    table.setAttribute('class', 'saltShaker');
 });
 
 var createBoard = () => {
@@ -89,6 +90,7 @@ function addSignalListeners() {
             });
         }
     }   
+
 }
 
 

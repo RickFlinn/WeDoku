@@ -2,8 +2,15 @@
     background-image: url("https://cdn12.picryl.com/photo/2016/12/31/wood-board-structure-backgrounds-textures-596a72-1024.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    z-index: 0;
 }
 
+p{
+    color: #000;
+    padding-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
 footer {
     position: fixed;
     bottom: 0;
@@ -13,7 +20,7 @@ footer {
 }
 
 .ColorChange{
-    border: 10px solid red;
+    border: 10px solid black;
 }
 .container-fluid {
     width: 100%;
@@ -22,6 +29,7 @@ footer {
     margin-right: auto;
     margin-left: auto;
     padding: 1vw;
+    min-width: 500px;
 }
 
 .row {
@@ -88,32 +96,37 @@ footer {
     display: inline-block;
 }
 table {
+    background: url("beachheart.jpg") center;
+    /*animation: move linear 10s infinite;*/
     margin: 1em auto;
+    min-width: 350px;
+    min-height: 610px;
 }
 
 td {
-    height: 30px;
-    width: 30px;
+    height: 4vw;
+    width: 4vw;
+    min-height: 20px;
     border: 1px solid;
     text-align: center;
 }
 
     td:first-child {
-        border-left: solid;
+        border-left: solid black;
     }
 
     td:nth-child(3n) {
-        border-right: solid;
+        border-right: solid black;
     }
 
 tr:first-child {
-    border-top: solid;
+    border-top: solid black;
     height: 20px;
     width: 20px;
 }
 
 tr:nth-child(3n) td {
-    border-bottom: solid;
+    border-bottom: solid black;
 }
 
 .hideSquare{
@@ -123,15 +136,18 @@ tr:nth-child(3n) td {
     display: block;
 }
 input {
-    width: 4vw;
-    height: 8vh;
-    font-size: 2.5em;
+    width: 100%;
+    height: 100%;
+    min-height: 20px;
+    font-size: 1.5em;
     text-align: center;
     background-repeat: no-repeat;
 }
-
-.BOARD:hover {
-    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+.nosalt{
+    animation: none;
+}
+.saltShaker {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) infinite;
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
     perspective: 1000px;
@@ -152,5 +168,16 @@ input {
 
     40%, 60% {
         transform: translate3d(4px, 0, 0);
+    }
+}
+/*animation: move linear 10s infinite;*/
+
+@keyframes move {
+    from {
+        background-position: 0
+    }
+
+    to {
+        background-position: -100% 0
     }
 }
