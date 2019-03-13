@@ -41,7 +41,7 @@ namespace We_Doku.Hubs
                     await _gsManager.UpdateGameSpace(spaceToUpdate);
                     GameBoard board = await _boardManager.GetJustBoard(bID);
                     board.Placed++;
-                    if (board.Placed >= 31)
+                    if (board.Placed >= 81)
                     {
                         // board completion logic
                         GridBuilder builder = new GridBuilder();
