@@ -1,0 +1,12 @@
+﻿@using We_Doku.Models;
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Welcome to Wedoku this is home</h1>
+<section class="enter">
+    <a asp-controller="Account" asp-action="Login">ENTER</a>
+</section>
+

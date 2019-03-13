@@ -1,0 +1,81 @@
+﻿@page
+@model We_Doku.Pages.IndexModel
+@{
+    Layout = "_Layout";
+}
+<link rel="stylesheet" href="~/reset.css" />
+<link rel="stylesheet" href="~/Site.css" />
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">WEDOKU</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link">Play WEDOKU<span class="sr-only"></span></a>
+                <a class="nav-item nav-link">About us</a>
+                <a class="nav-item nav-link">Profile</a>
+                <a class="nav-item nav-link">Lobby</a>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="container">
+    <table>
+        <tbody id="gameboard">
+            @for (var i = 0; i < 9; i++)
+            {
+                <tr>
+                    @for (var j = 0; j < 9; j++)
+                    {
+                        var temp = @Model.GameBoard.GameSpaces.ElementAt((i * 9) + j);
+                        <td id="@temp.X@temp.Y col">
+                            <input id="@temp.X@temp.Y x" type="hidden" value="@temp.X" />
+                            <input id="@temp.X@temp.Y y" type="hidden" value="@temp.Y" />
+                            <input id="@temp.X@temp.Y boardID" type="hidden" size="2" value="@temp.GameBoardID" />
+                            @if (temp.Masked)
+                            {
+                                <input id="@temp.X@temp.Y" type="number" class="gsSubmit" />
+                                <p id="@temp.X@temp.Y p" class="hideSquare">@temp.Value</p>
+                            }
+
+                            else
+                            {
+                                <p>@temp.Value</p>
+                            }
+
+                        </td>
+                    }
+                </tr>
+            }
+            @*<tr>
+                    <td id="00">
+                        <p>square 1</p>
+                        <input id="1x" value="0" type="hidden" />
+                        <input id="1y" value="0" type="hidden" />
+                        <button type="button" class="gsSubmit">
+                            This is a test to see if this button works and that I can access it.
+                        </button>
+                    </td>
+                    <td id="01">
+                        <p>square 2</p>
+                        <input value="0" type="hidden" />
+                        <input value="1" type="hidden" />
+                        <button type="button" class="gsSubmit">Click me</button>
+                    </td>
+                </tr>*@
+        </tbody>
+    </table>
+</div>
+<footer>
+    <div class="container-fluid bg-dark">
+        This is the footer
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="~/lib/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/gameplay.js"></script>
+
