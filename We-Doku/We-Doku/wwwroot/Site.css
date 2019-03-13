@@ -222,8 +222,12 @@ input {
 
 #avatar {
     width: 15vw;
+    border-color: black;
+    border-style: solid;
 }
 
 .authors {
     text-align: center;
+    border-color: black;
+    border-style: solid;
 }
