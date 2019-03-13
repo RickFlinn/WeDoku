@@ -20,5 +20,6 @@ namespace We_Doku.Models.Interfaces
 
         //Update/Edit
         Task UpdateGameBoard(GameBoard gameBoard);
+        Task<GameBoard> GetJustBoard(int bID);
     }
 }

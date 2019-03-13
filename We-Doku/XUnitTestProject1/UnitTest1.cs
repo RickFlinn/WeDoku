@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using We_Doku.Data;
 using We_Doku.Models;
+using We_Doku.Models.Helpers;
 using We_Doku.Models.Services;
 using Xunit;
 
@@ -35,6 +36,31 @@ namespace XUnitTestProject1
                 Assert.Equal(gameboard, result);
             }
 
+        }
+
+        [Fact]
+        public async void CanCreateMoreThanOneGameBoard()
+        {
+            Microsoft.EntityFrameworkCore.DbContextOptions<SudokuDbContext> options = new
+                DbContextOptionsBuilder<SudokuDbContext>().UseInMemoryDatabase
+                ("CreateMultipleGameBoards").Options;
+
+            using (SudokuDbContext context = new SudokuDbContext(options))
+            {
+                //Arrange
+                GameBoard gameboard = new GameBoard();
+                gameboard.ID = 1;
+                gameboard.Placed = 2;
+
+                //Act
+                GameBoardManager GBM = new GameBoardManager(context);
+                await GBM.CreateGameBoard(gameboard);
+                await GBM.GetGameBoards();
+
+                var result = context.GameBoards.FirstOrDefault(g => g.ID == g.ID);
+
+                Assert.Equal(gameboard, result);
+            }
         }
 
         [Fact]
@@ -114,6 +140,31 @@ namespace XUnitTestProject1
         }
 
         [Fact]
+        public async void CanGetJustGameBoard()
+        {
+            Microsoft.EntityFrameworkCore.DbContextOptions<SudokuDbContext> options = new
+                DbContextOptionsBuilder<SudokuDbContext>().UseInMemoryDatabase
+                ("JustGameBoard").Options;
+
+            using (SudokuDbContext context = new SudokuDbContext(options))
+            {
+                //Arrange
+                GameBoard gameboard = new GameBoard();
+                gameboard.ID = 1;
+                gameboard.Placed = 2;
+
+                //Act
+                GameBoardManager GBM = new GameBoardManager(context);
+                await GBM.CreateGameBoard(gameboard);
+                await GBM.GetJustBoard(1);
+
+                var result = context.GameBoards.FirstOrDefault(g => g.ID == g.ID);
+
+                Assert.Equal(gameboard, result);
+            }
+        }
+
+        [Fact]
         public async void CanCreateGameSpace()
         {
             Microsoft.EntityFrameworkCore.DbContextOptions<SudokuDbContext> options = new
@@ -134,6 +185,36 @@ namespace XUnitTestProject1
                 //Act
                 GameSpaceManager GSM = new GameSpaceManager(context);
                 await GSM.CreateGameSpace(gameSpace);
+
+                var result = context.GameSpaces.FirstOrDefault(g => g.X == 1 && g.Y == 2 && g.Value == 3 && g.Masked && g.GameBoardID == 1);
+
+                Assert.Equal(gameSpace, result);
+            }
+
+        }
+
+        [Fact]
+        public async void CanCreateMoreThanOneGameSpace()
+        {
+            Microsoft.EntityFrameworkCore.DbContextOptions<SudokuDbContext> options = new
+                DbContextOptionsBuilder<SudokuDbContext>().UseInMemoryDatabase
+                ("CreateMultipleGameSpaces").Options;
+
+            using (SudokuDbContext context = new SudokuDbContext(options))
+            {
+                //Arrange
+                GameSpace gameSpace = new GameSpace();
+                gameSpace.X = 1;
+                gameSpace.Y = 2;
+                gameSpace.Value = 3;
+                gameSpace.Masked = true;
+
+                gameSpace.GameBoardID = 1;
+
+                //Act
+                GameSpaceManager GSM = new GameSpaceManager(context);
+                await GSM.CreateGameSpace(gameSpace);
+                await GSM.GetGameSpaces();
 
                 var result = context.GameSpaces.FirstOrDefault(g => g.X == 1 && g.Y == 2 && g.Value == 3 && g.Masked && g.GameBoardID == 1);
 
@@ -290,10 +371,62 @@ namespace XUnitTestProject1
             GameSpace.Equals(1, gameSpace.X);
         }
 
+        [Fact]
+        public void CanGetGameSpaceY()
+        {
+            GameSpace gameSpace = new GameSpace();
+            gameSpace.Y = 1;
 
+            GameSpace.Equals(1, gameSpace.Y);
+        }
 
+        [Fact]
+        public void CanSetGameSpaceY()
+        {
+            GameSpace gameSpace = new GameSpace();
+            gameSpace.Y = 2;
+            gameSpace.Y = 1;
 
+            GameSpace.Equals(1, gameSpace.Value);
+        }
 
+        [Fact]
+        public void CanGetGameSpaceValue()
+        {
+            GameSpace gameSpace = new GameSpace();
+            gameSpace.Value = 2;
+
+            GameSpace.Equals(2, gameSpace.Value);
+        }
+
+        [Fact]
+        public void CanSetGameSpaceValue()
+        {
+            GameSpace gameSpace = new GameSpace();
+            gameSpace.Value = 2;
+            gameSpace.Value = 1;
+
+            GameSpace.Equals(1, gameSpace.Value);
+        }
+
+        [Fact]
+        public void CanGetGameSpacemMasked()
+        {
+            GameSpace gameSpace = new GameSpace();
+            gameSpace.Masked = true;
+
+            GameSpace.Equals(true, gameSpace.Masked);
+        }
+
+        [Fact]
+        public void CanSetGameSpaceMaksked()
+        {
+            GameSpace gameSpace = new GameSpace();
+            gameSpace.Masked = true;
+            gameSpace.Masked = false;
+            
+            GameSpace.Equals(false, gameSpace.Masked);
+        }
 
     }
 }
