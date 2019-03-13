@@ -220,14 +220,29 @@ input {
     }
 }
 
+a {
+    text-decoration-color: black;
+}
+
+.authortitle {
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Barrio', cursive;
+}
+
 #avatar {
     width: 15vw;
     border-color: black;
     border-style: solid;
+    text-align: center;
 }
 
 .authors {
     text-align: center;
     border-color: black;
     border-style: solid;
+}
+
+.allpics {
+    margin: 8vw;
 }
