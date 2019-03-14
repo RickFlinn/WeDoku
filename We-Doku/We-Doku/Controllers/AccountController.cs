@@ -48,6 +48,8 @@ namespace We_Doku.Controllers
                     Claim userNameClaim = new Claim("NickName", $"{user.NickName}");
                     List<Claim> claims = new List<Claim> { fullNameClaim, emailClaim, userNameClaim };
 
+                    await _userManager.AddToRoleAsync(user, ApplicationRoles.Member);
+
                     await _userManager.AddClaimsAsync(user, claims);
                     await _signInManager.SignInAsync(user, isPersistent: false);
 
