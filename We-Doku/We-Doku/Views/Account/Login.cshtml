@@ -7,58 +7,61 @@
     Layout = "_Layout";
 }
 <head>
-
-
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 </head>
 
 <body class="login-body">
-    <div class="login-reg-panel">
-    <h1>Login</h1>
-            <div class="login-info-box">
-                <h2>Already Have an account?</h2>
-                <label id="label-register" for="log-reg-show">Login</label>
-                <input type="radio" name="activate-log-panel" id="log-reg-show" checked="checked" />
-            </div>
-            <div class="register-info-box">
-                <h2>Don't have an account?</h2>
-                <p>Please register below with a new account</p>
-                <label id="label-login" for="log-login-show">Register</label>
-                <input type="radio" name="active-log-panel" id="log-login-show" />
-            </div>
+
+    <div class="login-reg-panel container-fluid">
+       
+        <div class="login-info-box">  
+            <h3>Already have an account, login</h3>
+            <button type="button" class="Form-Toggle">Login</button>
+        </div>
+        <div class="register-info-box">
+            <h3>Sign up for a new account</h3>
+            <button type="button" class="Form-Toggle">Register</button>
+        </div>
         <form method="post">
-        <div class="white-panel">
+            <div class="white-panel toggleableForm">
                 <div class="login-show">
                     <h2>LOGIN</h2>
                     <input type="text" asp-for="Email" placeholder="Email" />
-                    <input type="password" asp-for="Password" placeholder="password" />
-                    <button type="submit" asp-controller="Account" asp-action="Login" value="Login" />
+                        <input type="password" asp-for="Password" placeholder="password" />
+                        <button type="submit" asp-controller="Account" asp-action="Login" value="Login" />
                     <a href="">Forgot Password</a>
                 </div>
             </div>
         </form>
-        <div class="Dark-panel">
+        <div class="Dark-panel toggleableForm">
             <div class=" register-show">
                 <form method="post">
-                    <h2>REGISTER</h2>
-                    <input type="text" asp-for="FirstName" placeholder="First Name" />
+                <h2>REGISTER</h2>
+                <input type="text" asp-for="FirstName" placeholder="First Name" />
                     <input type="text" asp-for="LastName" placeholder="Last Name" />
                     <input type="text" asp-for="Email" placeholder="Email" />
                     <input type="password" asp-for="Password" placeholder="Password" />
                     <input type="password" asp-for="ConfirmPassword" placeholder="Confirm Password" />
-                    <button type="submit" id="btnShowForm" asp-controller="Account" asp-action="Register" />
-                </form>
+                <button type="submit" id="btnShowForm" asp-controller="Account" asp-action="Register">Submit</button> />
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</body>
+    </body>
+    <script type="text/javascript">
+        $('.Dark-panel').toggle();
 
+        //$('.gray, .orange').on(
+        //    'click',
+        //    function () {
+        //        $('.gray, .orange').toggle()
+        //    }
+        //);
+        //$(document).ready(function () {
+        //    $('.login-info-box').fadeOut();
 
-
-
-
-
-@*Javascript for the form to slide between registration and Login*@
-
-<script type="text/javascript">
-
-</script>
+        $(".Form-Toggle").click(function () {
+            $(".toggleableForm").toggle();
+        });
+    </script>

@@ -1,10 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using We_Doku.Data;
 using We_Doku.Models;
-using We_Doku.Models.Helpers;
 using We_Doku.Models.Services;
 using Xunit;
 
