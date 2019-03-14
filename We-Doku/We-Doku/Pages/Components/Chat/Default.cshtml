@@ -1,4 +1,12 @@
-﻿<div class="mess-contain">
+﻿@using Microsoft.AspNetCore.Identity
+@using We_Doku.Models
+@inject SignInManager<ApplicationUser> signInManager
+@inject UserManager<ApplicationUser> userManager
+
+@*@{ 
+    var nickName = @User.Claims.First(c=> c.Type == "FullName").Value;
+}*@
+<div class="mess-contain">
     <div class="">
         <div class="messenger">
             User Name<input type="text" id="userInput" />

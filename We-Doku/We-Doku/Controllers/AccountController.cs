@@ -30,11 +30,12 @@ namespace We_Doku.Controllers
             {
                 ApplicationUser user = new ApplicationUser()
                 {
-
-                    UserName = rvm.Email,
-                    Email = rvm.Email,
+ 
                     FirstName = rvm.FirstName,
                     LastName = rvm.LastName,
+                    Email = rvm.Email,
+                    UserName = rvm.Email,
+                    NickName = rvm.UserName
 
                 };
 
@@ -44,7 +45,8 @@ namespace We_Doku.Controllers
                     Claim fullNameClaim = new Claim("FullName", $"{user.FirstName} {user.LastName}");
 
                     Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimTypes.Email);
-                    List<Claim> claims = new List<Claim> { fullNameClaim, emailClaim };
+                    Claim userNameClaim = new Claim("NickName", $"{user.NickName}");
+                    List<Claim> claims = new List<Claim> { fullNameClaim, emailClaim, userNameClaim };
 
                     await _userManager.AddClaimsAsync(user, claims);
                     await _signInManager.SignInAsync(user, isPersistent: false);
@@ -53,7 +55,9 @@ namespace We_Doku.Controllers
                     return LocalRedirect("~/Game");
                 }
             }
-            return View(rvm);
+            ModelState.AddModelError(string.Empty, "Already a User. Please login.");
+
+            return RedirectToAction("Login", "Account");
         }
 
         [HttpPost]
@@ -70,8 +74,9 @@ namespace We_Doku.Controllers
                 }
             }
 
-            ModelState.TryAddModelError(string.Empty, "Invalid Login Attempt");
-            return View(lvm);
+            ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
+
+            return RedirectToAction("Login", "Account");
         }
 
         public async Task<IActionResult> Logout()
