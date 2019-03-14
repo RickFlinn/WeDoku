@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace We_Doku.Models.Helpers
         public SudokuGrid Puzzle { get; set; } = new SudokuGrid();
         public Random Rand { get; set; } = new Random();
 
-        
+
         public GridBuilder()
         {
             GenerateSolution();
@@ -61,9 +62,9 @@ namespace We_Doku.Models.Helpers
         private void GenerateSolution(int maxAttempts)
         {
             HashSet<Tuple<int, int>> EmptyCoords = new HashSet<Tuple<int, int>>();
-            for(int i = 0; i < 9; i++)
+            for (int i = 0; i < 9; i++)
             {
-                for(int j = 0; j < 9; j++)
+                for (int j = 0; j < 9; j++)
                 {
                     EmptyCoords.Add(new Tuple<int, int>(i, j));
                 }
@@ -71,20 +72,20 @@ namespace We_Doku.Models.Helpers
 
             if (EmptyCoords.Count != 81)
                 throw new Exception("Problem generating possible coordinates in GenerateSolution.");
-            
+
             Solution = new SudokuGrid();
             int placed = 0;
-            
+
 
             while (EmptyCoords.Count > 0)
             {
                 Tuple<int, int> randCoord = EmptyCoords.ElementAt(Rand.Next(EmptyCoords.Count));
                 int rx = randCoord.Item1;
                 int ry = randCoord.Item2;
-                
+
                 int[] possibleValues = Solution.LegalValues(rx, ry);
 
-                if(possibleValues.Length > 0)
+                if (possibleValues.Length > 0)
                 {
                     int rval = possibleValues[Rand.Next(0, possibleValues.Length - 1)];
                     Solution.Set(rx, ry, rval);
@@ -92,13 +93,15 @@ namespace We_Doku.Models.Helpers
 
                     EmptyCoords.Remove(randCoord);
 
-                } else // No possible moves at this coordinate.
+                }
+                else // No possible moves at this coordinate.
                 {
-                    if(maxAttempts > 0)
+                    if (maxAttempts > 0)
                     {
                         GenerateSolution(maxAttempts - 1);
 
-                    } else
+                    }
+                    else
                     {
                         GenerateSolution();
                     }
@@ -109,7 +112,7 @@ namespace We_Doku.Models.Helpers
 
         /// <summary>
         ///     Recursively generates a new Solution sudokuboard, modifying this GridBuilder's "Solution" grid.
-        /// </summary>Queue
+        /// </summary>
         public void GenerateSolutionRecursively()
         {
             Solution = new SudokuGrid();
@@ -123,58 +126,69 @@ namespace We_Doku.Models.Helpers
                 }
             }
 
-           Stack<Tuple<int, int>> emptySpaces = new Stack<Tuple<int, int>>();
+            // Build randomized initial row
+            for (int i = 0; i < 9; i++)
+            {
+                Tuple<int, int> initCoord = AllCoords.First();
+                AllCoords.Remove(initCoord);
+                int x = initCoord.Item1;
+                int y = initCoord.Item2;
+
+                int[] possibleValues = Solution.LegalValues(x, y);
+                Solution.Set(x, y, possibleValues[Rand.Next(possibleValues.Length)]);
+            }
+
+            Stack<Tuple<int, int>> emptySpaces = new Stack<Tuple<int, int>>();
             while (AllCoords.Count > 0)
             {
-                Tuple<int, int> randCoord = AllCoords.ElementAt(Rand.Next(AllCoords.Count));
+                Tuple<int, int> randCoord = AllCoords.First();
                 AllCoords.Remove(randCoord);
                 emptySpaces.Push(randCoord);
             }
 
 
-           if (!GenSolutionRec(emptySpaces))
+            if (!GenSolutionRec(emptySpaces))
                 throw new Exception("It asplode");
         }
 
         public bool GenSolutionRec(Stack<Tuple<int, int>> emptySpaces)
         {
-            
+
             Tuple<int, int> randCoord = emptySpaces.Pop();
             int rx = randCoord.Item1;
             int ry = randCoord.Item2;
-            
 
             int[] possibleValues = Solution.LegalValues(rx, ry);
 
-            if(possibleValues.Length > 0)
+            if (possibleValues.Length > 0)
             {
 
                 if (emptySpaces.Count <= 0)
                 {   // Base case found - we completed the board! This should return true all the way up the chain, signaling that we've done it.
                     Solution.Set(rx, ry, possibleValues[0]);
                     return true;
-                }  
-                
+                }
+
                 foreach (int val in possibleValues)
                 {
                     Solution.Set(rx, ry, val);
-                    
+
                     // Okay, we need to keep adding values to our board. Make a recursive call. If it returns true, somewhere down the line we've found our 
                     //  "solved" base case - keep passing true back up!
                     if (GenSolutionRec(emptySpaces))
-                    {   
+                    {
                         return true;
                     }
 
                     Solution.Reset(rx, ry);
                 }
 
-                
+
 
             }
             // No possible solutions with this board state could be found; add the coordinate back to the set of empties, reset that coordinate on the solution grid,
             //    and return false (go back).
-            
+
 
             emptySpaces.Push(randCoord);
             return false;
@@ -223,7 +237,7 @@ namespace We_Doku.Models.Helpers
             Puzzle = new SudokuGrid();
             Puzzle.CloneFrom(Solution);
 
-            for(int m = 0; m < masked; m++)
+            for (int m = 0; m < masked; m++)
             {
                 Tuple<int, int> randCoord = UnmaskedCoords.ElementAt(Rand.Next(UnmaskedCoords.Count)); // picks a random coordinate that hasnt yet been emptied
                 int rx = randCoord.Item1;
@@ -263,11 +277,11 @@ namespace We_Doku.Models.Helpers
                         newSpace.Masked = true;
                         newboard.Placed--;
                     }
-                    
+
                     newboard.GameSpaces.Add(newSpace);
                 }
             }
-            
+
             return newboard;
         }
     }
