@@ -43,10 +43,9 @@ namespace We_Doku.Hubs
                        await _gsManager.UpdateGameSpace(spaceToUpdate);
                         GameBoard board = await _boardManager.GetJustBoard(bID);
                         board.Placed++;
-                        if (board.Placed >= 1)
+                        if (board.Placed >= 81)
                         {
                             await Clients.All.SendAsync("BoardComplete");
-                            //await Clients.All.SendAsync("BoardComplete");
                             GridBuilder builder = new GridBuilder(40);
                             board = builder.BuildGameBoard(bID);
                             await _boardManager.UpdateGameBoard(board);
