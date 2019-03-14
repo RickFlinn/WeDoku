@@ -17,6 +17,10 @@ namespace We_Doku.Models.ViewModels
         public string Email { get; set; }
 
         [Required]
+        [Display(Name = "User Name")]
+        public string UserName{ get; set; }
+
+        [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 

@@ -1,8 +1,7 @@
-﻿@page
-@model We_Doku.Pages.Lobby.IndexModel
-@{
-    Layout = "_Layout";
-}
+﻿@using Microsoft.AspNetCore.Identity
+@using We_Doku.Models
+@inject SignInManager<ApplicationUser> signInManager
+@inject UserManager<ApplicationUser> userManager
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="/Game">WEDOKU</a>
@@ -15,8 +14,15 @@
                 <a class="nav-item nav-link" href="/AboutUs">About us</a>
                 <a class="nav-item nav-link" href="/Game">Profile</a>
                 <a class="nav-item nav-link" href="/Lobby">Lobby</a>
+                @if (signInManager.IsSignedIn(User))
+                {
+                    <a id="button-new" href='/Account/Logout'><i class="fas fa-sign-out-alt">Log Out</i></a>
+                }
+                else
+                {
+                    <a asp-controller="Account" id="button-new" asp-action="Login"><i class="fas fa-sign-in-alt"></i>Log In</a>
+                }
             </div>
         </div>
     </nav>
 </header>
-THIS IS THE LOBBY!!!!!!!!!!!!!!!!!!

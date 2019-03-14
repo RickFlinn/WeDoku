@@ -37,24 +37,26 @@ namespace We_Doku.Hubs
                 GameSpace spaceToUpdate = await _gsManager.GetGameSpace(xCoord, yCoord, bID);
                 if (input == spaceToUpdate.Value)
                 {
-                    spaceToUpdate.Masked = false;
-                    await _gsManager.UpdateGameSpace(spaceToUpdate);
-                    GameBoard board = await _boardManager.GetJustBoard(bID);
-                    board.Placed++;
-                    if (board.Placed >= 81)
+                    if(spaceToUpdate.Masked)
                     {
-                        // board completion logic
-                        GridBuilder builder = new GridBuilder();
-                        board = builder.BuildGameBoard(bID);
-                        await _boardManager.UpdateGameBoard(board);
-                        await Clients.All.SendAsync("UpdateSpace", x, y, value);
-                        await Clients.All.SendAsync("BoardComplete");
-                    }
-                    else
-                    {
-                        await _boardManager.UpdateGameBoard(board);
-                        await Clients.All.SendAsync("UpdateSpace", x, y, value);
-                    }
+                        spaceToUpdate.Masked = false;
+                       await _gsManager.UpdateGameSpace(spaceToUpdate);
+                        GameBoard board = await _boardManager.GetJustBoard(bID);
+                        board.Placed++;
+                        if (board.Placed >= 81)
+                        {
+                            await Clients.All.SendAsync("BoardComplete");
+                            //await Clients.All.SendAsync("BoardComplete");
+                            GridBuilder builder = new GridBuilder(40);
+                            board = builder.BuildGameBoard(bID);
+                            await _boardManager.UpdateGameBoard(board);
+                        }
+                        else
+                        {   
+                            await _boardManager.UpdateGameBoard(board);
+                            await Clients.All.SendAsync("UpdateSpace", x, y, value);
+                        }
+                    } else Console.Write("ayyy");
                 }
                 else
                 {
