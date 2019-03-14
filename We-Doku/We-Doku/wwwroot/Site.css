@@ -33,6 +33,11 @@ footer {
     min-width: 500px;
 }
 
+.container{
+    display: flex;
+    flex-direction: row;
+}
+
 .row {
     border: 1px solid black;
 }
@@ -195,9 +200,10 @@ input {
 
 .mess-contain {
     margin: 0 auto;
+    margin-top: 30px;
 }
 
-.message-box-contain {
+#message-box-contain {
     background: url("chatroom.jpg") center;
     height: 180px;
     width: 25vw;
@@ -209,18 +215,43 @@ input {
 #component {
     margin: 0 auto;
     display: flex;
-    flex-direction: row;
-    width: 50vw;
-    min-width: 500px;
+    flex-direction: column;
+    width: 300px;
 }
 
 .messenger {
     width: 300px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
 }
 
-.send-button {
+
+.send-button{
     margin-top: 1vw;
+    color: #fff;
+    background-color: #000;
+    margin-bottom: 40px;
 }
+
+#sendButton {
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    font-size: 40px;
+    background-color: #497960;
+    width: 300px;
+    border-radius: .2em;
+    height: 43px;
+}
+    #sendButton:hover {
+        margin-top: 1vw;
+        margin-bottom: 1vw;
+        font-size: 40px;
+        background-color: #624e2c;
+        width: 300px;
+        border-radius: .2em;
+        height: 43px;
+    }
 
 @media (max-width: 669px) {
 
@@ -235,6 +266,11 @@ input {
     .messenger {
         min-width: 300px;
     }
+    .container {
+        display: block;
+        flex-direction: row;
+    }
+
 }
 
 @keyframes shake {
