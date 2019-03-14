@@ -8,9 +8,15 @@ document.getElementsByClassName("gsSubmit").disabled = true;
 //Disable send button until connection is established
 document.getElementById("sendButton").disabled = true;
 
+connection.on("NewBoardReady", function () {
+    var butt = document.getElementById("win-contain");
+    butt.setAttribute('class', 'un-hideSquare');
+
+});
+
 connection.on("BoardComplete", function () {
     var table = document.getElementById("main")
-    var butt = document.getElementById("but-contain");
+    var butt = document.getElementById("you-win");
     butt.setAttribute('class', 'un-hideSquare');
     table.setAttribute('class', 'win');
 
@@ -42,10 +48,16 @@ connection.on("ErrorMessage", function (x, y) {
 
 connection.on("ReceiveMessage", function (user, message) {
     var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    var encodedMsg = user + " says " + msg;
+    var encodedMsg = user;
+    var encodedMsg2 = ": " + msg;
     var li = document.createElement("li");
+    var i = document.createElement("i");
+    i.setAttribute('class', 'fas fa-comment-alt');
     li.textContent = encodedMsg;
-    document.getElementById("messagesList").appendChild(li);
+    li.appendChild(i);
+    li2 = document.createElement("i");
+    li2.textContent = encodedMsg2;
+    document.getElementById("messagesList").appendChild(li).appendChild(li2);
 });
 
 var createBoard = () => {
