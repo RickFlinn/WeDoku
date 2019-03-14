@@ -5,9 +5,52 @@
     ViewData["Title"] = "Index";
     Layout = "_Layout";
 }
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+</head>
+@*<h1 class="animation-home">Welcome To Wedoku</h1>*@
+<div>
+    <div class="animation-home">
+        <div class="welcome">
+        <div>Welcome</div><br />
+            <div>To</div><br />
+            <div>Wedoku</div><br />
+        </div>             
+    </div>
+</div>
 
-<h1>Welcome to Wedoku this is home</h1>
-<section class="enter">
-    <a asp-controller="Account" asp-action="Login">ENTER</a>
-</section>
 
+<div class="enter">
+    <button asp-controller="Account" asp-action="Login">PLAY</button>
+</div>
+
+<script type="text/javascript">
+   
+    $('.animation-home').each(function () {
+        $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+    });
+
+    anime.timeline({ loop: true })
+        .add({
+            targets: '.animation-home .letter',
+           
+            translateY: [100, 0],
+            translateZ: 0,
+            opacity: [0, 1],
+            easing: "easeOutExpo",
+            duration: 1400,
+            delay: function (el, i) {
+                return 300 + 30 * i;
+            }
+        }).add({
+            targets: '.animation-home .letter',
+           
+            translateY: [0, -100],
+            opacity: [1, 0],
+            easing: "easeInExpo",
+            duration: 1200,
+            delay: function (el, i) {
+                return 100 + 30 * i;
+            }
+        });
+    </script>

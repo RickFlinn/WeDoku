@@ -719,3 +719,74 @@ a {
 .allpics {
     margin-left: 15vw;
 }
+
+/*ANIMATION HOME */
+
+.animation-home {
+    font-size: 1.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    font-weight: 600;
+}
+
+.animation-home {
+    margin-top: 15vw;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 2.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    font-weight: 700;
+}
+
+.animation-home .letter {
+    display: inline-block;
+    line-height: 1em;
+}
+span.letter {
+    border: 3px solid black;
+    margin-right: .5vw;
+    box-shadow: 0 11px 4px -2px;
+}
+
+.welcome {
+    display: flex;
+    margin-left: 29vw;
+    margin-right: 33vw;
+    justify-content: space-between;
+}
+
+.letters, .letters2, .letters3 {
+    border: 2px solid black;
+    padding: 1vw;
+}
+
+.welcome-to {
+    display: flex;
+    margin-top: 2vw;
+    margin-left: 42vw;
+    margin-right: 46vw;
+    justify-content: space-evenly;
+}
+
+.wedoku {
+    display: flex;
+    margin-left: 32vw;
+    margin-right: 37vw;
+    justify-content: space-between;
+    margin-top: 2vw;
+}
+
+button {
+    background: transparent;
+    border: none;
+    font-size: xx-large;
+    padding: 2vw;
+}
+.enter {
+    width: 10%;
+    border: 6px solid black;
+    margin-top: 3vw;
+    margin-left: 47%;
+}
