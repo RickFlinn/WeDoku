@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -9,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using We_Doku.Data;
 using We_Doku.Hubs;
 using We_Doku.Models;
+using We_Doku.Models.Handler;
 using We_Doku.Models.Interfaces;
 using We_Doku.Models.Services;
 
@@ -38,6 +40,12 @@ namespace We_Doku
             services.AddMvc();
             //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("NickNameOnly", policy => policy.Requirements.Add(new NickNameRequirement("true")));
+                options.AddPolicy("MemberOnly", policy => policy.RequireRole(ApplicationRoles.Member));
+
+            });
             // Adding Identity and user database Application User Db context
             services.AddIdentity<ApplicationUser, IdentityRole>()
                    .AddEntityFrameworkStores<ApplicationUserDbContext>()
@@ -49,6 +57,7 @@ namespace We_Doku
             services.AddDbContext<ApplicationUserDbContext>(options =>options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
             services.AddScoped<IGameBoard, GameBoardManager>();
             services.AddScoped<IGameSpace, GameSpaceManager>();
+            services.AddScoped<IAuthorizationHandler, NickNameHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,8 +72,9 @@ namespace We_Doku
             app.UseStaticFiles();
             //app.UseCookiePolicy();
             /************/
-            app.UseMvc();
             app.UseAuthentication();
+            app.UseMvc();
+
             app.UseSignalR(routes =>
             {
                 routes.MapHub<ChatHub>("/chathub");
