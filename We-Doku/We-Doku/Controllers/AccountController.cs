@@ -57,9 +57,9 @@ namespace We_Doku.Controllers
                     return LocalRedirect("~/Game");
                 }
             }
-            ModelState.AddModelError(string.Empty, "Already a User. Please login.");
+            ModelState.AddModelError(string.Empty, "Error. Please try again.");
 
-            return RedirectToAction("Login", "Account");
+            return View("Login");
         }
 
         [HttpPost]
