@@ -1,26 +1,25 @@
 ﻿@import url('https://fonts.googleapis.com/css?family=Mukta');
+
 body {
     background-image: url("https://cdn12.picryl.com/photo/2016/12/31/wood-board-structure-backgrounds-textures-596a72-1024.jpg");
-    background-repeat: no-repeat;
     background-size: cover;
-    z-index: 0;
 }
 
-p{
+p {
     color: #000;
     padding-top: 10px;
     font-size: 20px;
     font-weight: bold;
 }
+
 footer {
     position: fixed;
     bottom: 0;
     color: white;
     width: 100%;
-   
 }
 
-.ColorChange{
+.ColorChange {
     border: 10px solid black;
 }
 
@@ -65,16 +64,16 @@ footer {
     z-index: 1;
 }
 
-.dropdown-content a {
+    .dropdown-content a {
         color: black;
         padding: 12px 16px;
         text-decoration: none;
         display: block;
     }
 
-.dropdown-content a:hover {
-    background-color: #f1f1f1
-}
+        .dropdown-content a:hover {
+            background-color: #f1f1f1
+        }
 
 .dropdown:hover .dropdown-content {
     display: block;
@@ -84,7 +83,7 @@ footer {
     background-color: cornflowerblue;
 }
 
-.ColorChange1{
+.ColorChange1 {
     border: 10px solid green;
 }
 
@@ -116,11 +115,11 @@ td {
     text-align: center;
 }
 
-td:first-child {
+    td:first-child {
         border-left: solid black;
     }
 
-td:nth-child(3n) {
+    td:nth-child(3n) {
         border-right: solid black;
     }
 
@@ -134,11 +133,11 @@ tr:nth-child(3n) td {
     border-bottom: solid black;
 }
 
-.hideSquare{
+.hideSquare {
     display: none;
 }
 
-.un-hideSquare{
+.un-hideSquare {
     display: block;
 }
 
@@ -150,9 +149,11 @@ input {
     text-align: center;
     background-repeat: no-repeat;
 }
-.nosalt{
+
+.nosalt {
     animation: none;
 }
+
 .saltShaker {
     background: url("beachheart.jpg") center;
     animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) infinite;
@@ -177,9 +178,9 @@ input {
     animation: move linear 5s infinite;
     z-index: 2;
 }
+
 #win-contain {
     margin-top: 1vw;
-
 }
 
 #but-contain {
@@ -192,9 +193,10 @@ input {
 
 /******************************Chat box*************************/
 
-.mess-contain{
+.mess-contain {
     margin: 0 auto;
 }
+
 .message-box-contain {
     background: url("chatroom.jpg") center;
     height: 180px;
@@ -203,20 +205,20 @@ input {
     overflow: auto;
     margin-bottom: 4vw;
 }
+
 #component {
     margin: 0 auto;
     display: flex;
     flex-direction: row;
     width: 50vw;
     min-width: 500px;
-
 }
 
-.messenger{
+.messenger {
     width: 300px;
 }
 
-.send-button{
+.send-button {
     margin-top: 1vw;
 }
 
@@ -229,12 +231,12 @@ input {
         flex-direction: column;
         min-width: 300px;
     }
+
     .messenger {
         min-width: 300px;
     }
-
-
 }
+
 @keyframes shake {
     10%, 90% {
         transform: translate3d(-1px, 0, 0);
@@ -253,54 +255,74 @@ input {
     }
 }
 
-/*Logic form thead login command registration*/ 
+/*Logic form thead login command registration*/
 
-.login-body{
-    font-family: 'Mukta', sans-serif;
-    height: 100vh;
-    min-height: 550px;
-    background-color: antiquewhite;
-    position: center;
-    overflow-y: hidden;
+h3 {
+    font-family: 'Lato', sans-serif;
+    padding-left: 28PX;
+    font-size: 1.5em;
 }
 
 a {
     text-decoration: none;
     color: #444444;
+}
 
+.login-reg-panel.container-fluid {
+    height: 30vw;
+    width: 84vw;
+    box-shadow: 0 0 28px 6px #00000096;
 }
 
 .login-reg-panel {
     position: relative;
     top: 50%;
-    transform: translateY(-50%);
     text-align: center;
     width: 70%;
     right: 0;
     left: 0;
     margin: auto;
-    height: 400px;
-    background-color: rgba(236, 48, 20, 0.9);
+    height: 64vh;
+    background-color: rgba(236, 48, 20, 0.7);
+}
+
+button.Form-Toggle {
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 25vw;
+    height: 4vh;
+    background: top;
+    padding-left: 1vw;
+    margin: 28px;
+}
+
+.register-info-box {
+    width: 37%;
+    top: 20%;
+    right: 0;
+    position: absolute;
+    text-align: left;
 }
 
 .white-panel {
     background-color: darkslategray;
-    height: 500px;
+    height: 32vw;
     position: absolute;
-    top: -50px;
+    top: -4vw;
     width: 50%;
     right: calc(50% - 50px);
     transition: .3s ease-in-out;
     z-index: 0;
     box-shadow: 0 0 15px 9px #00000096;
 }
+
 .Dark-panel {
     background-color: darkslategray;
-    height: 500px;
+    height: 38vw;
     position: absolute;
-
-    top: -50px;
-    left: 33vw;
+    top: -6vw;
+    left: 38vw;
     width: 50%;
     right: calc(50% - 50px);
     transition: .3s ease-in-out;
@@ -315,53 +337,37 @@ a {
 
 .login-reg-panel {
     color: #B8B8B8;
-    margin-top: 18vw;
+    margin-top: 11vw;
 }
 
-.login-reg-panel #label-login,
-.login-reg-panel #label-register {
-    border: 1px solid #9E9E9E;
-    padding: 5px 5px;
-    width: 150px;
-    display: block;
-    text-align: center;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 18px;
- }
+    .login-reg-panel #label-login,
+    .login-reg-panel #label-register {
+        border: 1px solid #9E9E9E;
+        padding: 5px 5px;
+        width: 150px;
+        display: block;
+        text-align: center;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 18px;
+    }
 
-.login-info-box {
-    width: 30%;
-    padding: 0 50px;
-    top: 20%;
-    left: 0;
-    position: absolute;
-    text-align: left;
-}
 
-.register-info-box {
-    width: 30%;
-    padding: 0 50px;
-    top: 20%;
-    right: 0;
-    position: absolute;
-    text-align: left;
-}
+
+
 
 .right-log {
     right: 50px !important;
 }
 
-.login-show,
-.register-show {
+.login-show, .register-show {
     z-index: 1;
-    /*display: none;
-    opacity: 0;*/
     transition: 0.3s ease-in-out;
     color: #242424;
-    text-align: left;
-    padding: 50px;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    margin-top: 2vw;
 }
 
 .show-log-panel {
@@ -433,12 +439,171 @@ a {
     z-index: 99;
 }
 
+button#btnShowForm {
+    height: 3vw;
+    width: 19vw;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
 a {
     text-decoration: none;
     color: #2c7715;
 }
-/*animation: move linear 10s infinite;*/
 
+.register-show input[type="text"], .register-show input[type="password"] {
+    width: 100%;
+    display: block;
+    margin: 1vw 0;
+    padding: 1vw;
+    border: 1px solid #b5b5b5;
+    outline: none;
+}
+
+.login-reg-panel.container-fluid {
+    height: 24vw;
+    width: 84vw;
+}
+
+.login-info-box {
+    width: 39%;
+    top: 5%;
+    left: 7vw;
+    margin-top: 9vh;
+    position: absolute;
+    text-align: left;
+}
+
+
+@media only screen and (max-width: 500px) {
+    h3 {
+        font-size: 1.0em;
+    }
+
+    .register-info-box{
+    width: 29%;
+    top: 20%;
+    right: 22vw;
+    position: absolute;
+    text-align: left;
+    font-weight: bold;
+    color: black;
+    }
+
+    button#btnShowForm {
+        height: 6vw;
+        width: 19vw;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .Dark-panel {
+        background-color: darkslategray;
+        height: 50vh;
+        position: absolute;
+        top: -45vw;
+        left: 43vw;
+        width: 50%;
+        transition: .3s ease-in-out;
+        z-index: 0;
+        box-shadow: 0 0 15px 3vw #00000096;
+        margin-top: 36vw;
+        width: 60vw;
+    }
+
+    .register-show input[type="text"], .register-show input[type="password"] {
+        width: 100%;
+        display: block;
+        margin: 2vw 0;
+        /* padding: 15px; */
+        border: 1px solid #b5b5b5;
+        outline: none;
+    }
+
+    input {
+        width: 100%;
+        height: 100%;
+        /* min-height: 20px; */
+        font-size: 1em;
+        text-align: center;
+        background-repeat: no-repeat;
+    }
+
+    .login-reg-panel {
+        position: relative;
+        top: 5%;
+        transform: translateY(-50%);
+        text-align: center;
+        width: 97%;
+        right: 0;
+        left: 0;
+        /* margin: auto; */
+        margin-left: auto;
+        margin-right: auto;
+        height: 64vh;
+        background-color: rgba(236, 48, 20, 0.9);
+        color: #B8B8B8;
+        margin-top: 50%;
+    }
+
+    .white-panel {
+        background-color: darkslategray;
+        height: 49vh;
+        position: absolute;
+        top: -51vw;
+        right: 56vw;
+        width: 45%;
+        margin-top: 42vw;
+        transition: .3s ease-in-out;
+        z-index: 0;
+        box-shadow: 0 0 15px 3vw #00000096;
+    }
+
+    .login-reg-panel.container-fluid {
+        height: 56vw;
+        width: 84vw;
+        margin-top: 67vw;
+    }
+
+    .register-info-box {
+        width: 29%;
+        top: 20%;
+        right: 22vw;
+        position: absolute;
+        text-align: left;
+    }
+
+    .login-info-box {
+        width: 26%;
+        top: 5%;
+        left: 9vw;
+        margin-top: 6vh;
+        position: absolute;
+        text-align: center;
+        color: black;
+    }
+
+    input#Email, #Password {
+        width: 100%;
+        display: block; 
+        margin: 2vw 0; 
+        /* padding: 4vw; */
+        /*border: 1px solid #b5b5b5; */
+        /* outline: none; */
+     
+        
+    
+    }
+    button.Form-Toggle{
+
+    }
+    
+}
+
+
+/*animation: move linear 10s infinite;*/
 @keyframes move {
     from {
         background-position: 0
@@ -448,6 +613,7 @@ a {
         background-position: -100% 0
     }
 }
+
 @keyframes fireworks {
     from {
         background-position: 0

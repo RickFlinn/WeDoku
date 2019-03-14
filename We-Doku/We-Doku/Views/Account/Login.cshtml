@@ -8,20 +8,20 @@
 }
 <head>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 </head>
 
 <body class="login-body">
 
-    <div class="login-reg-panel">
+    <div class="login-reg-panel container-fluid">
        
-        <div class="login-info-box">
-            <h2>Already Have an account?</h2>
-            <button type="button" class="Form-Toggle">Toggle</button>
+        <div class="login-info-box">  
+            <h3>Already have an account, login</h3>
+            <button type="button" class="Form-Toggle">Login</button>
         </div>
         <div class="register-info-box">
-            <h2>Don't have an account?</h2>
-            <p>Please register below with a new account</p>           
-            <button type="button" class="Form-Toggle">Toggle</button>
+            <h3>Sign up for a new account</h3>
+            <button type="button" class="Form-Toggle">Register</button>
         </div>
         <form method="post">
             <div class="white-panel toggleableForm">
@@ -43,7 +43,7 @@
                     <input type="text" asp-for="Email" placeholder="Email" />
                     <input type="password" asp-for="Password" placeholder="Password" />
                     <input type="password" asp-for="ConfirmPassword" placeholder="Confirm Password" />
-                <button type="submit" id="btnShowForm" asp-controller="Account" asp-action="Register" />
+                <button type="submit" id="btnShowForm" asp-controller="Account" asp-action="Register">Submit</button> />
                     </form>
                 </div>
             </div>
