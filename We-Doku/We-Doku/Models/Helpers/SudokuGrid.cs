@@ -130,8 +130,9 @@ namespace We_Doku.Models.Helpers
             }
 
             SudokuCell cell = Grid[y, x];
-            
-            HashSet<int> possibleMoves = new HashSet<int>(cell.AvailableInColumn);
+
+            HashSet<int> possibleMoves = new HashSet<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            possibleMoves.IntersectWith(cell.AvailableInRow);
             possibleMoves.IntersectWith(cell.AvailableInColumn);
             possibleMoves.IntersectWith(cell.AvailableInSubGrid);
 

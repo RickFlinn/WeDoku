@@ -28,6 +28,15 @@ namespace We_Doku.Pages
         {
             IEnumerable<GameBoard> allBoards = await _gameBoard.GetGameBoards();
             GameBoard = allBoards.FirstOrDefault();
+            GameBoard.GameSpaces.Sort(delegate (GameSpace space1, GameSpace space2)
+            {
+                int compareY = space1.Y.CompareTo(space2.Y);
+                if (compareY == 0)
+                {
+                    return space1.X.CompareTo(space2.X);
+                }
+                return compareY;
+            });
         }
 
     }
