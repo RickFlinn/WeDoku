@@ -16,8 +16,8 @@
         @{<partial name="_NavbarPartial" />}
     </div>
     <div class="login-reg-panel container-fluid">
-       
-        <div class="login-info-box">  
+
+        <div class="login-info-box">
 
             <h3>Already have an account, login</h3>
             <button type="button" class="Form-Toggle">Login</button>
@@ -58,23 +58,23 @@
                     <span asp-validation-for="ConfirmPassword"></span>
                     <button type="submit" id="btnShowForm" asp-controller="Account" asp-action="Register">Submit</button> />
                 </form>
-                </div>
             </div>
         </div>
-    </body>
-    <script type="text/javascript">
-        $('.Dark-panel').toggle();
+    </div>
+</body>
+<script type="text/javascript">
+    $('.Dark-panel').toggle();
 
-        //$('.gray, .orange').on(
-        //    'click',
-        //    function () {
-        //        $('.gray, .orange').toggle()
-        //    }
-        //);
-        //$(document).ready(function () {
-        //    $('.login-info-box').fadeOut();
+    //$('.gray, .orange').on(
+    //    'click',
+    //    function () {
+    //        $('.gray, .orange').toggle()
+    //    }
+    //);
+    //$(document).ready(function () {
+    //    $('.login-info-box').fadeOut();
 
-        $(".Form-Toggle").click(function () {
-            $(".toggleableForm").toggle();
-        });
-    </script>
+    $(".Form-Toggle").click(function () {
+        $(".toggleableForm").toggle();
+    });
+</script>
