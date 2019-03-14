@@ -53,7 +53,7 @@ namespace We_Doku.Hubs
                         }
                         else
                         {   
-                            await _boardManager.UpdateBoard(board);
+                            await _boardManager.UpdateGameBoard(board);
                             await Clients.All.SendAsync("UpdateSpace", x, y, value);
                         }
                     } else Console.Write("ayyy");
