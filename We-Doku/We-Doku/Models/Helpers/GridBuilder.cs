@@ -9,6 +9,7 @@ namespace We_Doku.Models.Helpers
     {
         public SudokuGrid Solution { get; set; } = new SudokuGrid();
         public SudokuGrid Puzzle { get; set; } = new SudokuGrid();
+        public Random Rand { get; set; } = new Random();
 
         
         public GridBuilder()
@@ -36,7 +37,7 @@ namespace We_Doku.Models.Helpers
         private void GenerateSolution()
         {
             // Placeholder solution
-            Solution.Grid = new int[9, 9]
+            Solution.CopyFromGrid(new int[9, 9]
             {
                 { 5, 3, 4, 6, 7, 8, 9, 1, 2 },
                 { 6, 7, 2, 1, 9, 5, 3, 4, 8 },
@@ -47,7 +48,7 @@ namespace We_Doku.Models.Helpers
                 { 9, 6, 1, 5, 3, 7, 2, 8, 4 },
                 { 2, 8, 7, 4, 1, 9, 6, 3, 5 },
                 { 3, 4, 5, 2, 8, 6, 1, 7, 9 }
-            };
+            });
         }
 
         /// <summary>
@@ -73,11 +74,10 @@ namespace We_Doku.Models.Helpers
             Solution = new SudokuGrid();
             int placed = 0;
             
-            Random rand = new Random();
 
             while (EmptyCoords.Count > 0)
             {
-                Tuple<int, int> randCoord = EmptyCoords.ElementAt(rand.Next(EmptyCoords.Count));
+                Tuple<int, int> randCoord = EmptyCoords.ElementAt(Rand.Next(EmptyCoords.Count));
                 int rx = randCoord.Item1;
                 int ry = randCoord.Item2;
                 
@@ -85,7 +85,7 @@ namespace We_Doku.Models.Helpers
 
                 if(possibleValues.Length > 0)
                 {
-                    int rval = possibleValues[rand.Next(0, possibleValues.Length - 1)];
+                    int rval = possibleValues[Rand.Next(0, possibleValues.Length - 1)];
                     Solution.Set(rx, ry, rval);
                     placed++;
 
@@ -106,6 +106,9 @@ namespace We_Doku.Models.Helpers
             Console.Write("ay");
         }
 
+        /// <summary>
+        ///     Recursively generates a new Solution sudokuboard, modifying this GridBuilder's "Solution" grid.
+        /// </summary>Queue
         public void GenerateSolutionRecursively()
         {
             Solution = new SudokuGrid();
@@ -119,25 +122,23 @@ namespace We_Doku.Models.Helpers
                 }
             }
 
-            Queue<Tuple<int, int>> emptySpaces = new Queue<Tuple<int, int>>();
-            Random rand = new Random();
+           Stack<Tuple<int, int>> emptySpaces = new Stack<Tuple<int, int>>();
             while (AllCoords.Count > 0)
             {
-                Tuple<int, int> randCoord = AllCoords.ElementAt(rand.Next(AllCoords.Count));
+                Tuple<int, int> randCoord = AllCoords.ElementAt(Rand.Next(AllCoords.Count));
                 AllCoords.Remove(randCoord);
-                emptySpaces.Enqueue(randCoord);
+                emptySpaces.Push(randCoord);
             }
 
 
-            if (!GenSolutionRec(emptySpaces))
+           if (!GenSolutionRec(emptySpaces))
                 throw new Exception("It asplode");
         }
 
-        public bool GenSolutionRec(Queue<Tuple<int, int>> emptySpaces)
+        public bool GenSolutionRec(Stack<Tuple<int, int>> emptySpaces)
         {
             
-            Random rand = new Random();
-            Tuple<int, int> randCoord = emptySpaces.Dequeue();
+            Tuple<int, int> randCoord = emptySpaces.Pop();
             int rx = randCoord.Item1;
             int ry = randCoord.Item2;
             
@@ -147,7 +148,7 @@ namespace We_Doku.Models.Helpers
             if(possibleValues.Length > 0)
             {
 
-                if (emptySpaces.Count < 1)
+                if (emptySpaces.Count <= 0)
                 {   // Base case found - we completed the board! This should return true all the way up the chain, signaling that we've done it.
                     Solution.Set(rx, ry, possibleValues[0]);
                     return true;
@@ -163,13 +164,18 @@ namespace We_Doku.Models.Helpers
                     {   
                         return true;
                     }
+
+                    Solution.Reset(rx, ry);
                 }
+
                 
+
             }
             // No possible solutions with this board state could be found; add the coordinate back to the set of empties, reset that coordinate on the solution grid,
             //    and return false (go back).
-            emptySpaces.Enqueue(randCoord);
-            Solution.Set(rx, ry, 0);
+            
+
+            emptySpaces.Push(randCoord);
             return false;
         }
 
@@ -180,7 +186,7 @@ namespace We_Doku.Models.Helpers
         private void GeneratePuzzle()
         {
             // Logic to generate puzzle board using solution
-            Puzzle.Grid = new int[9, 9]
+            Puzzle.CopyFromGrid(new int[9, 9]
             {
                 { 5, 3, 0, 0, 7, 0, 0, 0, 0 },
                 { 6, 0, 0, 1, 9, 5, 0, 0, 0 },
@@ -191,7 +197,7 @@ namespace We_Doku.Models.Helpers
                 { 0, 6, 0, 0, 0, 0, 2, 8, 0 },
                 { 0, 0, 0, 4, 1, 9, 0, 0, 5 },
                 { 0, 0, 0, 0, 8, 0, 0, 7, 9 }
-            };
+            });
 
         }
 
@@ -214,12 +220,11 @@ namespace We_Doku.Models.Helpers
             }
 
             Puzzle = new SudokuGrid();
-            Array.Copy(Solution.Grid, Puzzle.Grid, 81);
-            Random rand = new Random();
+            Puzzle.CloneFrom(Solution);
 
             for(int m = 0; m < masked; m++)
             {
-                Tuple<int, int> randCoord = UnmaskedCoords.ElementAt(rand.Next(UnmaskedCoords.Count)); // picks a random coordinate that hasnt yet been emptied
+                Tuple<int, int> randCoord = UnmaskedCoords.ElementAt(Rand.Next(UnmaskedCoords.Count)); // picks a random coordinate that hasnt yet been emptied
                 int rx = randCoord.Item1;
                 int ry = randCoord.Item2;
 
