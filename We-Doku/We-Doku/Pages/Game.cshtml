@@ -36,14 +36,14 @@
                 <tr>
                     @for (var j = 0; j < 9; j++)
                     {
-                        var temp = @Model.GameBoard.GameSpaces.ElementAt((i * 9) + j);
+                        var temp = Model.GameBoard.GameSpaces.ElementAt((i * 9) + j);
                         <td id="@temp.X@temp.Y col">
                             <input id="@temp.X@temp.Y x" type="hidden" value="@temp.X" />
                             <input id="@temp.X@temp.Y y" type="hidden" value="@temp.Y" />
-                            <input id="@temp.X@temp.Y boardID" type="hidden" size="2" value="@temp.GameBoardID" />
+                            <input id="@temp.X@temp.Y boardID" type="hidden" value="@temp.GameBoardID" />
                             @if (temp.Masked)
                             {
-                                <input id="@temp.X@temp.Y" type="number" class="gsSubmit" />
+                                <input id="@temp.X@temp.Y" type="number" size="1" min="1" max="9" class="gsSubmit" />
                                 <p id="@temp.X@temp.Y p" class="hideSquare">@temp.Value</p>
                             }
 

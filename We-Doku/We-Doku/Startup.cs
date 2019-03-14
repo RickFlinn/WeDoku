@@ -45,7 +45,7 @@ namespace We_Doku
             // Add in the db context for identity user 
             services.AddSignalR();
             services.AddDbContext<SudokuDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
-            services.AddDbContext<ApplicationUserDbContext>(options =>options.UseSqlServer(Configuration["ConnectionStrings:ProductionConnection"]));
+            services.AddDbContext<ApplicationUserDbContext>(options =>options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
             services.AddScoped<IGameBoard, GameBoardManager>();
             services.AddScoped<IGameSpace, GameSpaceManager>();
         }
