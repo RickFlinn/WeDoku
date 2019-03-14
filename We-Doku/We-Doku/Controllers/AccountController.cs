@@ -48,6 +48,8 @@ namespace We_Doku.Controllers
                     Claim userNameClaim = new Claim("NickName", $"{user.NickName}");
                     List<Claim> claims = new List<Claim> { fullNameClaim, emailClaim, userNameClaim };
 
+                    await _userManager.AddToRoleAsync(user, ApplicationRoles.Member);
+
                     await _userManager.AddClaimsAsync(user, claims);
                     await _signInManager.SignInAsync(user, isPersistent: false);
 
@@ -55,9 +57,9 @@ namespace We_Doku.Controllers
                     return LocalRedirect("~/Game");
                 }
             }
-            ModelState.AddModelError(string.Empty, "Already a User. Please login.");
+            ModelState.AddModelError(string.Empty, "Error. Please try again.");
 
-            return RedirectToAction("Login", "Account");
+            return View("Login");
         }
 
         [HttpPost]

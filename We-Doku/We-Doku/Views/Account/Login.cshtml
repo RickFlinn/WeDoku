@@ -16,8 +16,8 @@
         @{<partial name="_NavbarPartial" />}
     </div>
     <div class="login-reg-panel container-fluid">
-       
-        <div class="login-info-box">  
+
+        <div class="login-info-box">
 
             <h3>Already have an account, login</h3>
             <button type="button" class="Form-Toggle">Login</button>
@@ -27,45 +27,54 @@
             <button type="button" class="Form-Toggle">Register</button>
         </div>
         <form method="post">
+            <div asp-validation-summary="All"></div>
             <div class="white-panel toggleableForm">
                 <div class="login-show">
                     <h2>LOGIN</h2>
                     <input type="text" asp-for="Email" placeholder="Email" />
-                        <input type="password" asp-for="Password" placeholder="password" />
-                        <button type="submit" asp-controller="Account" asp-action="Login" value="Login" />
-                    <a href="">Forgot Password</a>
+                    <span asp-validation-for="Email"></span>
+                    <input type="password" asp-for="Password" placeholder="password" />
+                    <span asp-validation-for="Password"></span>
+                    <button type="submit" asp-controller="Account" id="btnShowForm" asp-action="Login" value="Login">Login </button>
                 </div>
             </div>
         </form>
         <div class="Dark-panel toggleableForm">
             <div class=" register-show">
                 <form method="post">
-                <h2>REGISTER</h2>
-                <input type="text" asp-for="FirstName" placeholder="First Name" />
+                    <div asp-validation-summary="All"></div>
+                    <h2>REGISTER</h2>
+                    <input type="text" asp-for="FirstName" placeholder="First Name" />
+                    <span asp-validation-for="FirstName"></span>
                     <input type="text" asp-for="LastName" placeholder="Last Name" />
+                    <span asp-validation-for="LastName"></span>
                     <input type="text" asp-for="Email" placeholder="Email" />
+                    <span asp-validation-for="Email"></span>
                     <input type="text" asp-for="UserName" placeholder="User Name" />
+                    <span asp-validation-for="UserName"></span>
                     <input type="password" asp-for="Password" placeholder="Password" />
+                    <span asp-validation-for="Password"></span>
                     <input type="password" asp-for="ConfirmPassword" placeholder="Confirm Password" />
-                <button type="submit" id="btnShowForm" asp-controller="Account" asp-action="Register">Submit</button> />
-                    </form>
-                </div>
+                    <span asp-validation-for="ConfirmPassword"></span>
+                    <button type="submit" id="btnShowForm" asp-controller="Account" asp-action="Register">Submit</button> />
+                </form>
             </div>
         </div>
-    </body>
-    <script type="text/javascript">
-        $('.Dark-panel').toggle();
+    </div>
+</body>
+<script type="text/javascript">
+    $('.Dark-panel').toggle();
 
-        //$('.gray, .orange').on(
-        //    'click',
-        //    function () {
-        //        $('.gray, .orange').toggle()
-        //    }
-        //);
-        //$(document).ready(function () {
-        //    $('.login-info-box').fadeOut();
+    //$('.gray, .orange').on(
+    //    'click',
+    //    function () {
+    //        $('.gray, .orange').toggle()
+    //    }
+    //);
+    //$(document).ready(function () {
+    //    $('.login-info-box').fadeOut();
 
-        $(".Form-Toggle").click(function () {
-            $(".toggleableForm").toggle();
-        });
-    </script>
+    $(".Form-Toggle").click(function () {
+        $(".toggleableForm").toggle();
+    });
+</script>

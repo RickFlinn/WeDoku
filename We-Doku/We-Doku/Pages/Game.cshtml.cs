@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using We_Doku.Models;
@@ -10,6 +11,7 @@ using We_Doku.Models.Interfaces;
 
 namespace We_Doku.Pages
 {
+    [Authorize(Policy = "MemberOnly")]
     public class IndexModel : PageModel
     {
         private readonly IGameBoard _gameBoard;

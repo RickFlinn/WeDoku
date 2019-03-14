@@ -161,7 +161,7 @@ input {
 
 .saltShaker {
     background: url("beachheart.jpg") center;
-    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) infinite;
+    animation: shake 1s cubic-bezier(.36,.07,.19,.97);
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
     perspective: 1000px;
@@ -511,12 +511,30 @@ a {
     text-align: left;
 }
 
+#king {
+    background: url("king.jpg") no-repeat;
+    margin-left: 11vw;
+    margin-top: 40px;
+    width: 90vw;
+    height: 30vw;
+    min-width: 400px;
+    min-height: 300px;
+}
+
 
 @media only screen and (max-width: 500px) {
     h3 {
         font-size: 1.0em;
     }
-
+    #king {
+        background: url("COMING-SOON.png")left;
+        margin-left: 11vw;
+        margin-top: 40px;
+        width: 40vw;
+        height: 30vw;
+        min-width: 400px;
+        min-height: 300px;
+    }
     .register-info-box{
     width: 29%;
     top: 20%;
@@ -660,14 +678,32 @@ a {
     text-decoration-color: black;
 }
 
+/********************ABOUT US *******************/
+
+
+#teamnames {
+    font-family: 'BenchNine', sans-serif;
+    padding-top: 1vw;
+    padding-left: 14.25vw;
+    font-size: 6vh;
+}
+
+.indnames {
+    text-decoration: none;
+    margin-left: 2vw;
+    margin-right: 4.5vw;
+    font-size: 30px;
+    color: #fff;
+}
 .authortitle {
     text-align: center;
-    font-size: 30px;
+    font-size: 40px;
     font-family: 'Barrio', cursive;
 }
 
 #avatar {
     width: 15vw;
+    margin-right: 30px;
     border-color: black;
     border-style: solid;
     text-align: center;
@@ -677,8 +713,80 @@ a {
     text-align: center;
     border-color: black;
     border-style: solid;
+    font-size: 20px;
 }
 
 .allpics {
-    margin: 8vw;
+    margin-left: 15vw;
+}
+
+/*ANIMATION HOME */
+
+.animation-home {
+    font-size: 1.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    font-weight: 600;
+}
+
+.animation-home {
+    margin-top: 15vw;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 2.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    font-weight: 700;
+}
+
+.animation-home .letter {
+    display: inline-block;
+    line-height: 1em;
+}
+span.letter {
+    border: 3px solid black;
+    margin-right: .5vw;
+    box-shadow: 0 11px 4px -2px;
+}
+
+.welcome {
+    display: flex;
+    margin-left: 29vw;
+    margin-right: 33vw;
+    justify-content: space-between;
+}
+
+.letters, .letters2, .letters3 {
+    border: 2px solid black;
+    padding: 1vw;
+}
+
+.welcome-to {
+    display: flex;
+    margin-top: 2vw;
+    margin-left: 42vw;
+    margin-right: 46vw;
+    justify-content: space-evenly;
+}
+
+.wedoku {
+    display: flex;
+    margin-left: 32vw;
+    margin-right: 37vw;
+    justify-content: space-between;
+    margin-top: 2vw;
+}
+
+button {
+    background: transparent;
+    border: none;
+    font-size: xx-large;
+    padding: 2vw;
+}
+.enter {
+    width: 10%;
+    border: 6px solid black;
+    margin-top: 3vw;
+    margin-left: 47%;
 }

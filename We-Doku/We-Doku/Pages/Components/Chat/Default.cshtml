@@ -3,13 +3,13 @@
 @inject SignInManager<ApplicationUser> signInManager
 @inject UserManager<ApplicationUser> userManager
 
-@*@{ 
-    var nickName = @User.Claims.First(c=> c.Type == "FullName").Value;
-}*@
+@{ 
+    var nickName = @User.Claims.First(c=> c.Type == "NickName").Value;
+}
 <div class="mess-contain">
     <div class="">
         <div class="messenger">
-            User Name<input type="text" id="userInput" />
+            <input type="hidden" value="@nickName" id="userInput" />
             <br />
             Message<input type="text" id="messageInput" />
             <i id="sendButton" class="fas fa-comment-alt">Send Message</i>

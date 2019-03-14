@@ -4,25 +4,19 @@
 @{
     Layout = "_Layout";
 }
-<header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/Game">WEDOKU</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link" href="/Game">Play WEDOKU<span class="sr-only"></span></a>
-                <a class="nav-item nav-link" href="/AboutUs">About us</a>
-                <a class="nav-item nav-link" href="/Game">Profile</a>
-                <a class="nav-item nav-link" href="/Lobby">Lobby</a>
-            </div>
-        </div>
-    </nav>
-</header>
+<div class="header-outer">
+    @{<partial name="_NavbarPartial" />}
+</div>
 <p class="authortitle">Meet The Authors</p>
-
-<div class="allpics"><img src="~/reganavatar.png" id="avatar" /><a href="https://github.com/bigrig72">Regan Dufort</a>
-<img src="~/rickavatar.png" id="avatar" /><a href="https://github.com/rickflinn">Rick Flinn</a>
-<img src="~/nateavatar.png" id="avatar" /><a href="https://github.com/ntibbals">Nate Tibbals</a>
-<img src="~/rynasavatar.png" id="avatar" /><a href="https://github.com/rynnnaa">Ryna Truong</a></div>
+<div class="allpics">
+    <a href="https://github.com/bigrig72"><img src="~/nateavatar.png" id="avatar"></a>
+    <a href="https://github.com/rickflinn"><img src="~/reganavatar.png" id="avatar"></a>
+    <a href="https://github.com/ntibbals"><img src="~/rickavatar.png" id="avatar"></a>
+    <a href="https://github.com/rynnnaa"> <img src="~/rynasavatar.png" id="avatar"></a>
+</div>
+<div id="teamnames">
+    <a href="https://www.linkedin.com/in/regan-dufort/" class=indnames>Regan Dufort</a>
+    <a href="https://www.linkedin.com/in/richardcflinn/" class=indnames>Rick Flinn</a>
+    <a href="https://www.linkedin.com/in/ntibbals/" class=indnames>Nate Tibbals</a>
+    <a href="https://www.linkedin.com/in/ryna/" class=indnames>Ryna Truong</a>
+</div>
