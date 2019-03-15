@@ -27,3 +27,9 @@ anime.timeline({ loop: true })
             return 100 + 30 * i;
         }
     });
+
+$('.Dark-panel').toggle();
+
+$(".Form-Toggle").click(function () {
+    $(".toggleableForm").toggle();
+});
