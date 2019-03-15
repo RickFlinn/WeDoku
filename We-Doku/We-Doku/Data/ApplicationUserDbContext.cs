@@ -10,6 +10,10 @@ namespace We_Doku.Data
 {
     public class ApplicationUserDbContext : IdentityDbContext<ApplicationUser>
     {
+        /// <summary>
+        /// This method setup up our application database
+        /// </summary>
+        /// <param name="options">Application User Db</param>
         public ApplicationUserDbContext(DbContextOptions<ApplicationUserDbContext> options) : base(options)
         {
 

@@ -36,6 +36,10 @@ namespace We_Doku.Models
             }
         }
 
+        /// <summary>
+        /// This method adds a role to a user
+        /// </summary>
+        /// <param name="context"></param>
         private static void AddRoles(ApplicationUserDbContext context)
         {
             if (context.Roles.Any()) return;

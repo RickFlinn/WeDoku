@@ -31,14 +31,7 @@ namespace We_Doku
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.Configure<CookiePolicyOptions>(options =>
-            //{
-            //    options.CheckConsentNeeded = context => true;
-            //    options.MinimumSameSitePolicy = SameSiteMode.None;
-            //});
-
             services.AddMvc();
-            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddAuthorization(options =>
             {
@@ -54,7 +47,7 @@ namespace We_Doku
             // Add in the db context for identity user 
             services.AddSignalR();
             services.AddDbContext<SudokuDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
-            services.AddDbContext<ApplicationUserDbContext>(options =>options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
+            services.AddDbContext<ApplicationUserDbContext>(options =>options.UseSqlServer(Configuration["ConnectionStrings:DefaultUserConnection"]));
             services.AddScoped<IGameBoard, GameBoardManager>();
             services.AddScoped<IGameSpace, GameSpaceManager>();
             services.AddScoped<IAuthorizationHandler, NickNameHandler>();
@@ -68,10 +61,8 @@ namespace We_Doku
                app.UseDeveloperExceptionPage();
             }
             
-            //app.UseHttpsRedirection();
             app.UseStaticFiles();
-            //app.UseCookiePolicy();
-            /************/
+
             app.UseAuthentication();
             app.UseMvc();
 

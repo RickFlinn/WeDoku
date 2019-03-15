@@ -151,7 +151,12 @@ namespace We_Doku.Models.Helpers
                 throw new Exception("It asplode");
         }
 
-        public bool GenSolutionRec(Stack<Tuple<int, int>> emptySpaces)
+        /// <summary>
+        ///     Recursive helper method used by 
+        /// </summary>
+        /// <param name="emptySpaces"> Stack containing coordinates that need to be filled. </param>
+        /// <returns></returns>
+        private bool GenSolutionRec(Stack<Tuple<int, int>> emptySpaces)
         {
 
             Tuple<int, int> randCoord = emptySpaces.Pop();

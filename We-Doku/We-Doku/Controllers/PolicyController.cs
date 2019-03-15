@@ -9,6 +9,10 @@ namespace We_Doku.Controllers
 {
     public class PolicyController : Controller
     {
+        /// <summary>
+        /// This is the restriction for members only
+        /// </summary>
+        /// <returns>Game page view</returns>
         [Authorize(Policy = "MemberOnly")]
         public IActionResult Game()
         {
