@@ -24,13 +24,9 @@ connection.on("BoardComplete", function () {
 });
 
 connection.on("UpdateSpace", function (x, y) {
-    console.log(x, ' x');
-    console.log(y, ' y');
-    console.log(""+ x + y);
     var td = document.getElementById("" + x + y);
     var p = document.getElementById("" + x + y + " p");
     var table = document.getElementById("table-board")
-    console.log(td, "td");
     td.setAttribute('class', 'hideSquare');
     p.setAttribute('class', 'un-hideSquare');
     table.setAttribute('class', 'nosalt');
@@ -38,11 +34,8 @@ connection.on("UpdateSpace", function (x, y) {
 });
 
 connection.on("ErrorMessage", function (x, y) {
-    console.log(x, ' x');
-    console.log(y, ' y');
     var td = document.getElementById("" + x + y);
     var table = document.getElementById("table-board")
-    console.log(td);
     td.setAttribute('class', 'ColorChange2');
     table.setAttribute('class', 'saltShaker');
 });
@@ -56,7 +49,7 @@ connection.on("ReceiveMessage", function (user, message) {
     i.setAttribute('class', 'fas fa-comment-alt');
     li.textContent = encodedMsg;
     li.appendChild(i);
-    li2 = document.createElement("i");
+    var li2 = document.createElement("i");
     li2.textContent = encodedMsg2;
     document.getElementById("messagesList").appendChild(li).appendChild(li2);
 });
@@ -109,13 +102,10 @@ function addSignalListeners() {
         for (let j = 0; j < 9; j++) {
             let id = '' + i + j;
             $('#' + id).change(() => {
-                console.log(this);
                 var x = document.getElementById(id + ` x`).value;
                 var y = document.getElementById(id + ` y`).value;
                 var boardID = document.getElementById(id + ' boardID').value;
                 var val = document.getElementById(id).value;
-                console.log(x);
-                console.log(y);
                 connection.invoke('SendCoordinate', x, y, boardID, val).catch(function (err) {
                     return console.error(err.toString());
                 });
