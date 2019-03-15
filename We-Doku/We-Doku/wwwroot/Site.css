@@ -474,6 +474,10 @@ button.Form-Toggle {
     z-index: 99;
 }
 
+li{
+    margin-bottom: 10px;
+
+}
 button#btnShowForm {
     width: 19vw;
     margin-left: auto;
@@ -521,6 +525,14 @@ a {
 
 
 @media only screen and (max-width: 500px) {
+
+    .allpics {
+        display: flex;
+        flex-direction: column;
+        margin-left: 12vw;
+        text-align: center;
+        width: 300px;
+    }
     h3 {
         font-size: 1.0em;
     }
@@ -688,7 +700,6 @@ a {
 
 .indnames {
     text-decoration: none;
-    margin-left: 2vw;
     margin-right: 4.5vw;
     font-size: 30px;
     color: #fff;
@@ -700,8 +711,8 @@ a {
 }
 
 #avatar {
-    width: 15vw;
-    margin-right: 30px;
+    width: 250px;
+    margin-right: 50px;
     border-color: black;
     border-style: solid;
     text-align: center;
@@ -715,8 +726,14 @@ a {
 }
 
 .allpics {
-    margin-left: 15vw;
+    display: flex;
+    flex-direction: row;
+    margin-left: 12vw;
+    text-align: center;
+    width: 800px;
 }
+
+
 
 /*ANIMATION HOME */
 
