@@ -15,14 +15,29 @@ namespace We_Doku.Controllers
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> _signInManager;
 
+        /// <summary>
+        /// Account controller constructor
+        /// </summary>
+        /// <param name="userManager">user manager for identity</param>
+        /// <param name="signInManager">sign in manager for identity</param>
         public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
         }
+
+        /// <summary>
+        /// Login view method
+        /// </summary>
+        /// <returns>Login view</returns>
         [HttpGet]
         public IActionResult Login() => View();
 
+        /// <summary>
+        /// This method utilizes identity for user registration
+        /// </summary>
+        /// <param name="rvm">Register User View Model</param>
+        /// <returns>Game pager or reload initial page if unable to register</returns>
         [HttpPost]
         public async Task<IActionResult> Register(RegisterUser rvm)
         {
@@ -62,6 +77,11 @@ namespace We_Doku.Controllers
             return View("Login");
         }
 
+        /// <summary>
+        /// This method utilizes identity to log a User in
+        /// </summary>
+        /// <param name="lvm">Login View Model</param>
+        /// <returns>Game page or reloads login page if unable to login</returns>
         [HttpPost]
         public async Task<IActionResult> Login(LoginUser lvm)
         {
@@ -81,6 +101,10 @@ namespace We_Doku.Controllers
             return RedirectToAction("Login", "Account");
         }
 
+        /// <summary>
+        /// This method logs a user out
+        /// </summary>
+        /// <returns>Home page</returns>
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();

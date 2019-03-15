@@ -327,7 +327,7 @@ button.Form-Toggle {
     border: 1px solid black;
     border-radius: 15px;
     width: 25vw;
-    height: 4vh;
+    /*height: 4vh;*/
     background: top;
     padding-left: 1vw;
     margin: 28px;
@@ -355,7 +355,6 @@ button.Form-Toggle {
 
 .Dark-panel {
     background-color: darkslategray;
-    height: 38vw;
     position: absolute;
     top: -6vw;
     left: 38vw;
@@ -476,7 +475,6 @@ button.Form-Toggle {
 }
 
 button#btnShowForm {
-    height: 3vw;
     width: 19vw;
     margin-left: auto;
     margin-right: auto;
@@ -498,7 +496,7 @@ a {
 }
 
 .login-reg-panel.container-fluid {
-    height: 24vw;
+    /*height: 24vw;*/
     width: 84vw;
 }
 

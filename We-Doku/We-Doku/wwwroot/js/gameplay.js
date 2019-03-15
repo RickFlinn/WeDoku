@@ -1,4 +1,5 @@
-﻿
+﻿"use strict";
+
 var connection = new signalR.HubConnectionBuilder().withUrl("/gamehub").build();
 
 //Disable send button until connection is established
