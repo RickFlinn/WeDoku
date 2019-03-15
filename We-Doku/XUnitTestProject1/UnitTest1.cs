@@ -220,35 +220,7 @@ namespace XUnitTestProject1
 
         }
 
-        [Fact]
-        public async void CanDeleteGameSpace()
-        {
-            Microsoft.EntityFrameworkCore.DbContextOptions<SudokuDbContext> options = new
-                DbContextOptionsBuilder<SudokuDbContext>().UseInMemoryDatabase
-                ("DeleteGameSpace").Options;
-
-            using (SudokuDbContext context = new SudokuDbContext(options))
-            {
-                //Arrange
-                GameSpace gameSpace = new GameSpace();
-                gameSpace.X = 1;
-                gameSpace.Y = 2;
-                gameSpace.Value = 3;
-                gameSpace.Masked = true;
-
-                gameSpace.GameBoardID = 1;
-
-                //Act
-                GameSpaceManager GSM = new GameSpaceManager(context);
-                await GSM.CreateGameSpace(gameSpace);
-                await GSM.DeleteGameSpace(1);
-
-                var result = context.GameSpaces.FirstOrDefault(g => g.X == 1 && g.Y == 2 && g.Value == 3 && g.Masked && g.GameBoardID == 1);
-
-                Assert.Null(result);
-            }
-
-        }
+        
 
         [Fact]
         public async void CanUpdateGameSpace()
@@ -316,7 +288,7 @@ namespace XUnitTestProject1
 
             gameBoard.ID = 1;
 
-            GameBoard.Equals(1, gameBoard.ID);
+            Assert.Equal(1, gameBoard.ID);
         }
 
         [Fact]
@@ -326,7 +298,7 @@ namespace XUnitTestProject1
             gameBoard.ID = 2;
             gameBoard.ID = 1;
 
-            GameBoard.Equals(1, gameBoard.ID);
+            Assert.Equal(1, gameBoard.ID);
         }
 
         [Fact]
@@ -336,7 +308,7 @@ namespace XUnitTestProject1
 
             gameBoard.Placed = 1;
 
-            GameBoard.Equals(1, gameBoard.Placed);
+            Assert.Equal(1, gameBoard.Placed);
         }
 
         [Fact]
@@ -346,7 +318,7 @@ namespace XUnitTestProject1
             gameBoard.Placed = 2;
             gameBoard.Placed = 1;
 
-            GameBoard.Equals(1, gameBoard.Placed);
+            Assert.Equal(1, gameBoard.Placed);
         }
 
         [Fact]
@@ -355,7 +327,7 @@ namespace XUnitTestProject1
             GameSpace gameSpace = new GameSpace();
             gameSpace.X = 1;
 
-            GameSpace.Equals(1, gameSpace.X);
+            Assert.Equal(1, gameSpace.X);
         }
 
         [Fact]
@@ -365,7 +337,7 @@ namespace XUnitTestProject1
             gameSpace.X = 2;
             gameSpace.X = 1;
 
-            GameSpace.Equals(1, gameSpace.X);
+            Assert.Equal(1, gameSpace.X);
         }
 
         [Fact]
@@ -374,7 +346,7 @@ namespace XUnitTestProject1
             GameSpace gameSpace = new GameSpace();
             gameSpace.Y = 1;
 
-            GameSpace.Equals(1, gameSpace.Y);
+            Assert.Equal(1, gameSpace.Y);
         }
 
         [Fact]
@@ -384,7 +356,7 @@ namespace XUnitTestProject1
             gameSpace.Y = 2;
             gameSpace.Y = 1;
 
-            GameSpace.Equals(1, gameSpace.Value);
+            Assert.Equal(1, gameSpace.Value);
         }
 
         [Fact]
@@ -393,7 +365,7 @@ namespace XUnitTestProject1
             GameSpace gameSpace = new GameSpace();
             gameSpace.Value = 2;
 
-            GameSpace.Equals(2, gameSpace.Value);
+            Assert.Equal(2, gameSpace.Value);
         }
 
         [Fact]
@@ -403,7 +375,7 @@ namespace XUnitTestProject1
             gameSpace.Value = 2;
             gameSpace.Value = 1;
 
-            GameSpace.Equals(1, gameSpace.Value);
+            Assert.Equal(1, gameSpace.Value);
         }
 
         [Fact]
@@ -412,7 +384,7 @@ namespace XUnitTestProject1
             GameSpace gameSpace = new GameSpace();
             gameSpace.Masked = true;
 
-            GameSpace.Equals(true, gameSpace.Masked);
+            Assert.True(gameSpace.Masked);
         }
 
         [Fact]
@@ -421,8 +393,8 @@ namespace XUnitTestProject1
             GameSpace gameSpace = new GameSpace();
             gameSpace.Masked = true;
             gameSpace.Masked = false;
-            
-            GameSpace.Equals(false, gameSpace.Masked);
+
+            Assert.False(gameSpace.Masked);
         }
 
     }
