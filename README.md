@@ -31,7 +31,7 @@ An interactive multiplayer Sudoku platform that creates an environment where lik
 
 ## Schema
 
-![SCHEMA]()
+![SCHEMA](./Assets/WedokuSchema.png)
 
 ## Set Up Instructions - Local Machine
 - Fork the Wedoku repository.
@@ -72,22 +72,24 @@ An interactive multiplayer Sudoku platform that creates an environment where lik
 ## Images
 
 #### Landing Page
-![SNAPSHOT]()
+![SNAPSHOT](./Assets/landing.PNG)
 
 #### Login and Registration 
-![SNAPSHOT]()
+![SNAPSHOT](./Assets/register.PNG)
+![SNAPSHOT](./Assets/login.PNG)
 
 #### Game Board
-![SNAPSHOT]()
+![SNAPSHOT](./Assets/game.PNG)
 
 #### Game Board - In Action
-![SNAPSHOT]()
+![SNAPSHOT](./Assets/Inaction.PNG)
+![SNAPSHOT](./Assets/Inaction-chat.PNG)
 
 #### Game Board - Completion
-![SNAPSHOT]()
+![SNAPSHOT](./Assets/win.PNG)
 
 #### About Us 
-![SNAPSHOT]()
+![SNAPSHOT](./Assets/AboutUs.PNG)
 
 ## Contributors
 
